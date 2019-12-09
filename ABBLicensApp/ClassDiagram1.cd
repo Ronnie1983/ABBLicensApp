@@ -15,7 +15,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="ABBLicensApp.Model.License">
-    <Position X="4.5" Y="2.5" Width="1.5" />
+    <Position X="4.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Model\License.cs</FileName>
