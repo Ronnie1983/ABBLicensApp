@@ -10,12 +10,11 @@ namespace ABBLicensApp.Model
     public class RelayCommand : ICommand
     {
         private Action _execute;
-        private Func<bool> _canExecute;
+        private Func<bool> _canExecute = () => true;
 
         public RelayCommand(Action execute)
-            : this(execute, null)
         {
-
+            _execute = execute;
         }
 
         public RelayCommand(Action execute, Func<bool> canExecute)
@@ -28,7 +27,7 @@ namespace ABBLicensApp.Model
 
         public bool CanExecute(object parameter)
         {
-            return _canExecute == null ? true : _canExecute();
+            return _canExecute();
         }
 
         public void Execute(object parameter)
@@ -40,12 +39,7 @@ namespace ABBLicensApp.Model
 
         public void RaiseCanExecuteChanged()
         {
-            var handler = CanExecuteChanged;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
-
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 }
