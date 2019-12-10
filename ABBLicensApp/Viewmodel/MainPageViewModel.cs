@@ -14,7 +14,7 @@ using ABBLicensApp.View;
 
 namespace ABBLicensApp.Viewmodel
 {
-    class MainPageViewModel : INotifyPropertyChanged
+    class MainPageViewModel
     {
         private string _newName; // Holds the name of the login in login screen
         private string _newPassword; // Holds the password inserted in logins creen
@@ -39,7 +39,6 @@ namespace ABBLicensApp.Viewmodel
             {
                 if (value == _newName) return;
                 _newName = value;
-                OnPropertyChanged();
             }
         }
 
@@ -50,7 +49,6 @@ namespace ABBLicensApp.Viewmodel
             {
                 if (value == _newPassword) return;
                 _newPassword = value;
-                OnPropertyChanged();
             }
         }
 
@@ -61,30 +59,14 @@ namespace ABBLicensApp.Viewmodel
 
         private void LoginMetode() // The login method
         {
-            bool aName = false;
-           
-
             foreach (var aUser in Shared.UsersCollection) // controls if user exists
             {
                 if (NewName == aUser.Username && NewPassword == aUser.Password)
                 {
-                    aName = true;
+                    Shared.CurrentUser = NewName;
+                    Shared.NavigationClass.LoginButtonNavigation();
                 }
             }
-
-            if (aName) //control of match between inserted and saved user data
-            {
-                Shared.CurrentUser = NewName;
-                Shared.NavigationClass.LoginButtonNavigation();
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

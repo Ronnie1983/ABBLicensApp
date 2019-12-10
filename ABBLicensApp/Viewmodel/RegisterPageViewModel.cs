@@ -73,8 +73,11 @@ namespace ABBLicensApp.Viewmodel
 
         public void RegUser()
         {
-            Shared.UsersCollection.Add(new User(NewName,NewPassword));
-            Shared.NavigationClass.GoToRegistrationSucceedButtonNavigation();
+            if (NewPassword == RePassword)
+            {
+               Shared.UsersCollection.Add(new User(NewName,NewPassword));
+               Shared.NavigationClass.GoToRegistrationSucceedButtonNavigation(); 
+            }
         }
 
         public StaticClassSingleton Shared { get; }
