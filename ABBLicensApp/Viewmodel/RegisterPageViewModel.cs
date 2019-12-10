@@ -76,7 +76,7 @@ namespace ABBLicensApp.Viewmodel
             if (NewPassword == RePassword)
             {
                Shared.UsersCollection.Add(new User(NewName,NewPassword));
-               Shared.NavigationClass.GoToRegistrationSucceedButtonNavigation(); 
+               Navigation.GoToPage("RegistrationSucceed"); 
             }
         }
 

@@ -23,7 +23,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void MainPageButton()
         {
-            Shared.NavigationClass.GoToMainPage();
+            Navigation.GoToPage("MainPage");
         }
     }
 }

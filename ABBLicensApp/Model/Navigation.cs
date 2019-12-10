@@ -10,31 +10,24 @@ using Microsoft.Xaml.Interactions.Core;
 
 namespace ABBLicensApp.Model
 {
-    public class Navigation : Page
+    public class Navigation
     {
-        public void RegistrationButtonNavigation()
+        static public void GoToPage(string dest, object param = null)
         {
+            string pageNamespace = "ABBLicensApp.View";
             var rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(RegisterPage));
+            Type type = Type.GetType(pageNamespace + "." + dest);
+
+            if (param == null)
+            {
+                rootFrame.Navigate(type);
+            }
+            else
+            {
+                rootFrame.Navigate(type, param);
+            }
         }
 
-        public void LoginButtonNavigation()
-        {
-            var rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(LoginSucceed));
-        }
-
-        public void GoToRegistrationSucceedButtonNavigation()
-        {
-            var rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(registrationSucceed));
-        }
-
-        public void GoToMainPage()
-        {
-            var rootFrame = Window.Current.Content as Frame;
-            rootFrame.Navigate(typeof(MainPage));
-        }
 
     }
 }

@@ -21,7 +21,7 @@ namespace ABBLicensApp.Viewmodel
 
         public MainPageViewModel() // Constructor of the viewmodel
         {
-            LoginCommand = new RelayCommand(LoginMetode); // create the object of a login method
+            LoginCommand = new RelayCommand(LoginMethod); // create the object of a login method
             GoToRegisterPage = new RelayCommand(GoToRegisterPageMethod); // Create the object of a register method
             Shared = StaticClassSingleton.Instance; // calls the property that returns a instance field whom create the static common class
         }
@@ -54,17 +54,17 @@ namespace ABBLicensApp.Viewmodel
 
         public void GoToRegisterPageMethod() // the register method
         {
-            Shared.NavigationClass.RegistrationButtonNavigation(); // calls the method navigate to registerpage
+            Navigation.GoToPage("RegisterPage"); // calls the method navigate to registerpage
         }
 
-        private void LoginMetode() // The login method
+        private void LoginMethod() // The login method
         {
             foreach (var aUser in Shared.UsersCollection) // controls if user exists
             {
                 if (NewName == aUser.Username && NewPassword == aUser.Password)
                 {
                     Shared.CurrentUser = NewName;
-                    Shared.NavigationClass.LoginButtonNavigation();
+                    Navigation.GoToPage("LoginSucceed");
                 }
             }
         }
