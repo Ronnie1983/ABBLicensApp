@@ -36,6 +36,5 @@ namespace ABBLicensApp.Model
             rootFrame.Navigate(typeof(MainPage));
         }
 
-
     }
 }
