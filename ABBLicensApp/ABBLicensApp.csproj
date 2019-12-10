@@ -125,6 +125,7 @@
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Viewmodel\CustomersViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
     <Compile Include="Viewmodel\RegistrationSucceedViewModel.cs" />
@@ -168,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\Customers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\LoginSucceed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
