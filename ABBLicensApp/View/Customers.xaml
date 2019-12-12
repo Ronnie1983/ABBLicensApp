@@ -10,16 +10,6 @@
     mc:Ignorable="d"
     >
 
-    <Page.Resources>
-        <Style x:Key="CustomerBtn" TargetType="Button">
-            <Setter Property="Height" Value="100" />
-            <Setter Property="Width" Value="200" />
-            <Setter Property="Background" Value="LightGray" />
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Margin" Value="20"/>
-        </Style>
-    </Page.Resources>
-
     <Page.Background>
         <ThemeResource ResourceKey="ApplicationPageBackgroundThemeBrush"/>
     </Page.Background>
@@ -27,12 +17,36 @@
     <Page.DataContext>
         <viewmodel:CustomersViewModel/>
     </Page.DataContext>
-    <Grid>
-        <ListView ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
+ 
+    <Grid Background="#FFF3F3F3" BorderBrush="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="White" Height="30" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="5,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Left" Source="/Assets/ABB_Logo_Screen_RGB_33px_@1x.png" Height="20"/>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <TextBlock Text="{Binding Shared.CurrentUser}" Margin="5"/>
+            <Image Source="/Assets/Icon awesome-user-alt.png" Margin="5"/>
+            <Image Source="/Assets/Icon material-language.png" Margin="5"/>
+            <Image Source="/Assets/Icon feather-menu.png" Margin="5"/>
+        </StackPanel>
+
+        <ListView Grid.Column="1" Grid.Row="1" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Name: "/>
+                        <TextBlock Text="Name: Lort"/>
                         <TextBlock Text="{Binding CompanyName}"/>
                     </StackPanel>
                 </DataTemplate>
@@ -42,5 +56,4 @@
         <Button Content="Next" Command="{Binding GoToSelected}"/>
 
     </Grid>
-   
 </Page>
