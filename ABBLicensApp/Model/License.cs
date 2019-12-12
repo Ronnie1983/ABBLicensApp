@@ -8,8 +8,8 @@ namespace ABBLicensApp.Model
         private int _units;
         private string _licenseKey;
         // måske suppliername skal være en enum
-        public License(DateTime expireDate, int units, string licenseKey, string supplierName)
-        :base("License",supplierName,DateTime.Now)
+        public License(DateTime startDate, DateTime expireDate, int units, string licenseKey, string supplierName)
+        :base("License", supplierName, startDate)
         {
             _expireDate = expireDate;
             _units = units;

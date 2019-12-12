@@ -18,9 +18,9 @@ namespace ABBLicensApp.Viewmodel
             Customer = Shared.SelectedCustomer;
             Customer.Products = new List<Product>
             {
-                new Product("KSJDLKASJDKLASD", "McAfee", new DateTime(2015, 10, 20)),
-                new Product("SDJAKLSD-weqewqe", "Windows", new DateTime(2013, 12, 1)),
-                new Product("KSJDLKASJDKLASD", "Cisco", new DateTime(2016, 7, 14))
+                new License(DateTime.Parse("2015-10-20"), DateTime.Parse("2020-01-01"), 100, "KSJDLKASJDKLASD", "McAfee"),
+                new License(DateTime.Parse("2013-12-01"), DateTime.Parse("2020-01-15"), 50, "SDJAKLSD-weqewqe", "Windows"),
+                new License(DateTime.Parse("2016-07-14"), DateTime.Parse("2022-12-18"), 20, "KSJDLKASJDKLASD", "Cisco")
             };
         }
 
