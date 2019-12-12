@@ -10,14 +10,64 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <viewmodel:CustomersViewModel/>
+        <viewmodel:CustomerViewModel/>
     </Page.DataContext>
 
     <Grid>
-        <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="100" Text="Navn"/>
-                <TextBlock FontSize="80" Text=""/>
-                <TextBlock Text="{Binding SelectedCustomer.CompanyName}"/>
-        </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
+                <TextBlock Text="{Binding  Customer.CompanyName}" HorizontalAlignment="Center"
+                           FontSize="40"/>
+                <TextBlock Text="{Binding Customer.ContactName}" HorizontalAlignment="Center"
+                           FontSize="30"/>
+                <TextBlock Text="{Binding Customer.Email}" HorizontalAlignment="Center"
+                           FontSize="30"/>
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="0">
+                <TextBlock Text="INDSÆT LICENS NAVN HER" FontSize="20" HorizontalAlignment="Center"/>
+                <ListView ItemsSource="{Binding Customer.Products}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding ProductName}" Margin="10"/>
+                                <TextBlock Text="{Binding SupplierName}" Margin="10"/>
+                                <TextBlock Text="{Binding StartDate}"  Margin="10"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Grid.Column="1">
+                <TextBlock Text="Licenses" FontSize="20" HorizontalAlignment="Center"/>
+                <ListView ItemsSource="{Binding Customer.Products}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <TextBlock Text="{Binding SupplierName}" Margin="10" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
