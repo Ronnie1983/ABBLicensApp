@@ -17,12 +17,33 @@ namespace ABBLicensApp.Common
         private ObservableCollection<User> _usersCollection; // holds the list of user registrered Todo implent this to load all saves users from file when opening program and save when closing
         private string _currentUser;
         private Customer _selectedCustomer;
+        private ObservableCollection<Customer> _customers;
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
             NavigationClass = new Navigation(); // create the navigation class for shared use
             UsersCollection = new ObservableCollection<User>(); // create the user collection
             UsersCollection.Add(new User("admin","1234"));
+            _customers = new ObservableCollection<Customer>()
+            {
+                new Customer("Roskilde Vand Forsyning", "vandgade 12", "ros@vand.com", "22334456", "Jan"),
+                new Customer("Holbæk Ild Forsyning", "ilddgade 12", "hold@ild.com", "66671122", "Torkild"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor")
+            };
+        }
+
+        public ObservableCollection<Customer> Customers
+        {
+            get => _customers;
+            set
+            {
+                if (Equals(value, _customers)) return;
+                _customers = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<User> UsersCollection

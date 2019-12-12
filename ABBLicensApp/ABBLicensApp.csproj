@@ -125,12 +125,16 @@
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Viewmodel\AddCustomerViewModel.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
     <Compile Include="Viewmodel\CustomerViewModel.cs" />
     <Compile Include="Viewmodel\LoginSucceedViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
     <Compile Include="Viewmodel\RegistrationSucceedViewModel.cs" />
+    <Compile Include="View\AddCustomer.xaml.cs">
+      <DependentUpon>AddCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
@@ -178,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\AddCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

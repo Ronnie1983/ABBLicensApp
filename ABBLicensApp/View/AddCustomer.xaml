@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="ABBLicensApp.View.AddCustomer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ABBLicensApp.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:ABBLicensApp.Viewmodel"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <viewmodel:AddCustomerViewModel/>
+    </Page.DataContext>
+
+    <Grid Background="#FFF3F3F3" BorderBrush="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Background="White" Height="30" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="5,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Left" Source="/Assets/ABB_Logo_Screen_RGB_33px_@1x.png" Height="20"/>
+            </StackPanel>
+        </Border>
+        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Horizontal" Height="30" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <TextBlock Text="{Binding Shared.CurrentUser}" Margin="5"/>
+            <Image Source="/Assets/Icon awesome-user-alt.png" Margin="5"/>
+            <Image Source="/Assets/Icon material-language.png" Margin="5"/>
+            <Image Source="/Assets/Icon feather-menu.png" Margin="5"/>
+        </StackPanel>
+
+        <Border CornerRadius="15" MinWidth="400" MinHeight="200" Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="50" Background="White" BorderThickness="1" BorderBrush="Black">
+        <StackPanel HorizontalAlignment="Center" Margin="30">
+            <TextBlock Text="Register Customer" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="20"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Customer"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Name}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Addr"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Addr}"/>
+            </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Contact"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Contact}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Phone"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Phone}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="E-mail"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Email}"/>
+            </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
+                    <Button Content="Create" Style="{StaticResource BlueButtonCustom}" Command="{Binding RegisterCustomerBtn}"/>
+                    <Button Content="Cancel" Style="{StaticResource BlueButtonCustom}" Background="Red" Command="{Binding CancelThis}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+    </Grid>
+</Page>
