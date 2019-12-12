@@ -9,17 +9,6 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <Style x:Key="BlueButtonCustom" TargetType="Button">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="35"/>
-            <Setter Property="Background" Value="#63A1FF"/>
-            <Setter Property="CornerRadius" Value="15"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-    </Page.Resources>
-
     <Page.DataContext>
         <viewmodel:RegistrationSucceedViewModel/>
     </Page.DataContext>
