@@ -126,6 +126,7 @@
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
+    <Compile Include="Viewmodel\CustomerViewModel.cs" />
     <Compile Include="Viewmodel\LoginSucceedViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />

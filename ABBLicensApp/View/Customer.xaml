@@ -14,9 +14,10 @@
     </Page.DataContext>
 
     <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="Navn"/>
-            <TextBlock Text="{Binding SelectedCustomer.CompanyName}"/>
+        <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="100" Text="Navn"/>
+                <TextBlock FontSize="80" Text=""/>
+                <TextBlock Text="{Binding SelectedCustomer.CompanyName}"/>
         </StackPanel>
     </Grid>
 </Page>

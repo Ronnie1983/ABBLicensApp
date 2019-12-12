@@ -32,7 +32,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void GoToCustomerDetails()
         {
-            Navigation.GoToPage("Customer",SelectedCustomer);
+            Navigation.GoToPage("Customer", SelectedCustomer);
         }
 
         public RelayCommand GoToSelected { get; set; }
