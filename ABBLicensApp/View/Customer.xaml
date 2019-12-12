@@ -52,6 +52,7 @@
                                 <TextBlock Text="{Binding ProductName}" Margin="10"/>
                                 <TextBlock Text="{Binding SupplierName}" Margin="10"/>
                                 <TextBlock Text="{Binding StartDate}"  Margin="10"/>
+                                <TextBlock Text="{Binding ExpireDate}" Margin="10"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -63,7 +64,7 @@
                 <ListView ItemsSource="{Binding Customer.Products}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                                <TextBlock Text="{Binding SupplierName}" Margin="10" />
+                            <TextBlock Text="{Binding SupplierName}" Margin="10" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

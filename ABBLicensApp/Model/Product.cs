@@ -4,9 +4,9 @@ namespace ABBLicensApp.Model
 {
     public class Product
     {
-        private string _productName;
-        private string _supplierName;
-        private DateTime _startDate;
+        protected string _productName;
+        protected string _supplierName;
+        protected DateTime _startDate;
         private int _id;
 
         public Product(string productName, string supplierName, DateTime startDate)
