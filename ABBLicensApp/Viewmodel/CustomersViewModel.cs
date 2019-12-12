@@ -20,12 +20,23 @@ namespace ABBLicensApp.Viewmodel
             { 
                 new Customer("Roskilde Vand Forsyning", "vandgade 12", "ros@vand.com", "22334456", "Jan"),
                 new Customer("Holbæk Ild Forsyning", "ilddgade 12", "hold@ild.com", "66671122", "Torkild"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
+                new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
                 new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor")
             };
 
             GoToSelected = new RelayCommand(GoToCustomerDetails);
+            GoBack = new RelayCommand(GoBackToMain);
             Shared = StaticClassSingleton.Instance;
 
+        }
+
+        public RelayCommand GoBack { get; set; }
+
+        public void GoBackToMain()
+        {
+            Navigation.GoToPage("LoginSucceed");
         }
 
         public StaticClassSingleton Shared { get; }
@@ -34,6 +45,7 @@ namespace ABBLicensApp.Viewmodel
         {
             Navigation.GoToPage("Customer", SelectedCustomer);
         }
+
 
         public RelayCommand GoToSelected { get; set; }
 

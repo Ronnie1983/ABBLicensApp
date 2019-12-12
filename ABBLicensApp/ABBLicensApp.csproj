@@ -163,6 +163,7 @@
     <Content Include="Assets\Icon awesome-user-alt.png" />
     <Content Include="Assets\Icon feather-menu.png" />
     <Content Include="Assets\Icon material-language.png" />
+    <Content Include="Assets\Icon open-arrow-thick-left.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

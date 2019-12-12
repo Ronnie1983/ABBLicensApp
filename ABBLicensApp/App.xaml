@@ -37,6 +37,16 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="1"/>
         </Style>
+        <Style x:Key="BlueMenuButton" TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Background" Value="#FF5DDFFF"/>
+            <Setter Property="CornerRadius" Value="15"/>
+            <Setter Property="Margin" Value="25"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
         <Style x:Key="TextboxStyleCustom" TargetType="TextBox">
             <Setter Property="Width" Value="200"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
