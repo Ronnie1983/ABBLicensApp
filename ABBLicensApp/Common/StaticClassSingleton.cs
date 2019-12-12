@@ -16,6 +16,7 @@ namespace ABBLicensApp.Common
         private static StaticClassSingleton _instance = new StaticClassSingleton(); // part of singleton design pattern. create the instance
         private ObservableCollection<User> _usersCollection; // holds the list of user registrered Todo implent this to load all saves users from file when opening program and save when closing
         private string _currentUser;
+        private Customer _selectedCustomer;
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
@@ -31,6 +32,17 @@ namespace ABBLicensApp.Common
             {
                 if (Equals(value, _usersCollection)) return;
                 _usersCollection = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Customer SelectedCustomer
+        {
+            get => _selectedCustomer;
+            set
+            {
+                if (Equals(value, _selectedCustomer)) return;
+                _selectedCustomer = value;
                 OnPropertyChanged();
             }
         }
