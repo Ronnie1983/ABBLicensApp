@@ -141,8 +141,8 @@
     <Compile Include="View\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\registrationSucceed.xaml.cs">
-      <DependentUpon>registrationSucceed.xaml</DependentUpon>
+    <Compile Include="View\RegistrationSucceed.xaml.cs">
+      <DependentUpon>RegistrationSucceed.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +185,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\registrationSucceed.xaml">
+    <Page Include="View\RegistrationSucceed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
