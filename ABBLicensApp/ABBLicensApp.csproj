@@ -126,9 +126,13 @@
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
+    <Compile Include="Viewmodel\LoginSucceedViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
     <Compile Include="Viewmodel\RegistrationSucceedViewModel.cs" />
+    <Compile Include="View\Customers.xaml.cs">
+      <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginSucceed.xaml.cs">
       <DependentUpon>LoginSucceed.xaml</DependentUpon>
     </Compile>

@@ -61,7 +61,7 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <viewmodel:MainPageViewModel/>
+        <viewmodel:LoginSucceedViewModel/>
     </Page.DataContext>
 
     <Grid Background="#FFF3F3F3" BorderBrush="Black">
@@ -89,7 +89,7 @@
         </StackPanel>
 
        <StackPanel Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
-            <Button Style="{StaticResource WhiteMenuButton}" Content="Company"/>
+            <Button Style="{StaticResource WhiteMenuButton}" Content="Customer" Command="{Binding CustomerBtn}"/>
             <Button Style="{StaticResource GreenMenuButton}" Content="Licens"/>
             <Button Style="{StaticResource GreenMenuButton}" Content="Other product"/>
             <Button Style="{StaticResource BlueMenuButton}" Content="Add Licens"/>

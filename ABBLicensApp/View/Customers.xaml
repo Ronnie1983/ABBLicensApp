@@ -5,8 +5,7 @@
     xmlns:local="using:ABBLicensApp.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="using:ABBLicensApp.ViewModel"
-    xmlns:kocal="using:ABBLicensApp.Viewmodel"
+    xmlns:viewmodel="using:ABBLicensApp.Viewmodel"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -21,9 +20,9 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <kocal:CustomersViewModel/>
+        <viewmodel:CustomersViewModel/>
     </Page.DataContext>
-    
+
     <ListView ItemsSource="Customers">
         <ListView.ItemTemplate>
             <DataTemplate>

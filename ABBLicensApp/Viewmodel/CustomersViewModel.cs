@@ -8,7 +8,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    class CustomersViewModel
+    public class CustomersViewModel
     {
         private ObservableCollection<Customer> _customers;
 
