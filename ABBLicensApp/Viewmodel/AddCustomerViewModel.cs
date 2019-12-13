@@ -46,7 +46,7 @@ namespace ABBLicensApp.Viewmodel
         private void AddCustomer()
         {
             Shared.Customers.Add(new Customer(Name, Addr,Email,Phone,Contact));
-            Navigation.GoToPage("Customers");
+            Navigation.GoBack();
         }
 
         public string Name

@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.System.Profile;
+using System.Linq;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
@@ -21,10 +22,10 @@ namespace ABBLicensApp.Viewmodel
             Shared = StaticClassSingleton.Instance;
             EditBtn = new RelayCommand(EditMethod);
             _name = Shared.SelectedSupplier.Name;
-            GoBack = new RelayCommand(Cancel);
+            GoBackBtn = new RelayCommand(Cancel);
         }
 
-        public RelayCommand GoBack { get; set; }
+        public RelayCommand GoBackBtn { get; set; }
 
         private void Cancel()
         {
@@ -35,8 +36,15 @@ namespace ABBLicensApp.Viewmodel
 
         private void EditMethod()
         {
-            Shared.Suppliers.Remove(Shared.SelectedSupplier);
-            Shared.Suppliers.Add(new Supplier(Name));
+            //Shared.Suppliers.Where((supplier) => supplier.Name == Shared.SelectedSupplier.Name);
+            foreach (var a in Shared.Suppliers)
+            {
+                if (a.Name == Shared.SelectedSupplier.Name)
+                {
+                    a.Name = Name;
+                }
+            }
+
             Navigation.GoToPage("Licenses");
         }
 
