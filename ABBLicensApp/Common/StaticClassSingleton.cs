@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Model;
+using License = System.ComponentModel.License;
 
 namespace ABBLicensApp.Common
 {
@@ -18,6 +19,9 @@ namespace ABBLicensApp.Common
         private string _currentUser;
         private Customer _selectedCustomer;
         private ObservableCollection<Customer> _customers;
+        private ObservableCollection<License> _licenses;
+        private ObservableCollection<Supplier> _suppliers;
+        private Supplier _selectedSupplier;
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
@@ -33,6 +37,45 @@ namespace ABBLicensApp.Common
                 new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
                 new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor")
             };
+            Suppliers = new ObservableCollection<Supplier>()
+            {
+                new Supplier("McAfee"),
+                new Supplier("Cisco"),
+                new Supplier("Microsoft")
+            };
+        }
+
+        public Supplier SelectedSupplier
+        {
+            get => _selectedSupplier;
+            set
+            {
+                if (Equals(value, _selectedSupplier)) return;
+                _selectedSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Supplier> Suppliers
+        {
+            get => _suppliers;
+            set
+            {
+                if (Equals(value, _suppliers)) return;
+                _suppliers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<License> Licenses
+        {
+            get => _licenses;
+            set
+            {
+                if (Equals(value, _licenses)) return;
+                _licenses = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<Customer> Customers

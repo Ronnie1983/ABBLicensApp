@@ -7,7 +7,7 @@ namespace ABBLicensApp.Model
         private DateTime _expireDate;
         private int _units;
         private string _licenseKey;
-        // måske suppliername skal være en enum
+        
         public License(DateTime startDate, DateTime expireDate, int units, string licenseKey, string supplierName)
         :base("License", supplierName, startDate)
         {
