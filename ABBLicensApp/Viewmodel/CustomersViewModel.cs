@@ -15,7 +15,7 @@ namespace ABBLicensApp.Viewmodel
         public CustomersViewModel()
         {
             GoToSelected = new RelayCommand(GoToCustomerDetails);
-            GoBack = new RelayCommand(GoBackToMain);
+            GoBack = new RelayCommand(GoBackOnePage);
             NewCustomerBtn = new RelayCommand(NewCustomer);
             Shared = StaticClassSingleton.Instance;
         }
@@ -29,9 +29,9 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand GoBack { get; set; }
 
-        public void GoBackToMain()
+        public void GoBackOnePage()
         {
-            Navigation.GoToPage("LoginSucceed");
+            Navigation.GoBack();
         }
 
         public StaticClassSingleton Shared { get; }
