@@ -17,6 +17,18 @@ namespace ABBLicensApp.Viewmodel
             GoBack = new RelayCommand(GoBackToMain);
             Shared = StaticClassSingleton.Instance;
             NewSupplierBtn = new RelayCommand(NewSupplierNav);
+            EditSupplierBtn = new RelayCommand(EditSupplierB);
+        }
+
+        public RelayCommand EditSupplierBtn { get; set; }
+
+        private void EditSupplierB()
+        {
+            if (Shared.SelectedSupplier != null)
+            {
+                Navigation.GoToPage("EditSupplier");
+            }
+            
         }
 
         private void NewSupplierNav()
@@ -33,7 +45,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void GoBackToMain()
         {
-            Navigation.GoToPage("LoginSucceed");
+            Navigation.GoBack();
         }
 
         public ObservableCollection<Supplier> Suppliers

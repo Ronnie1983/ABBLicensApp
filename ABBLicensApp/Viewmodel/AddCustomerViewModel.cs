@@ -97,7 +97,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void GoBackCancel()
         {
-            Navigation.GoToPage("Customers");
+            Navigation.GoBack();
         }
 
 
