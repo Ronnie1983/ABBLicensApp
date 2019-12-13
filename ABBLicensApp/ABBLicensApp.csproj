@@ -124,10 +124,13 @@
     <Compile Include="Model\License.cs" />
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Model\RelayCommand.cs" />
+    <Compile Include="Model\Supplier.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Viewmodel\AddCustomerViewModel.cs" />
+    <Compile Include="Viewmodel\AddSupplierViewModel.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
     <Compile Include="Viewmodel\CustomerViewModel.cs" />
+    <Compile Include="Viewmodel\LicensesViewModel.cs" />
     <Compile Include="Viewmodel\LoginSucceedViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
@@ -135,11 +138,17 @@
     <Compile Include="View\AddCustomer.xaml.cs">
       <DependentUpon>AddCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AddSupplier.xaml.cs">
+      <DependentUpon>AddSupplier.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Customers.xaml.cs">
       <DependentUpon>Customers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Licenses.xaml.cs">
+      <DependentUpon>Licenses.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginSucceed.xaml.cs">
       <DependentUpon>LoginSucceed.xaml</DependentUpon>
@@ -186,11 +195,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AddSupplier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Customers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Licenses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

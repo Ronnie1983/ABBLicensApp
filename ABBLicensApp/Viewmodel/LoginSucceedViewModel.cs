@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ABBLicensApp.Model;
+using ABBLicensApp.View;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -12,6 +13,14 @@ namespace ABBLicensApp.Viewmodel
         public LoginSucceedViewModel()
         {
             CustomerBtn = new RelayCommand(GotoCustomerList);
+            LicensesBtn = new RelayCommand(GoToLicenses);
+        }
+
+        public RelayCommand LicensesBtn { get; set; }
+
+        private void GoToLicenses()
+        {
+            Navigation.GoToPage("Licenses");
         }
 
         public void GotoCustomerList()
