@@ -21,7 +21,7 @@ namespace ABBLicensApp.Common
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
-            NavigationClass = new Navigation(); // create the navigation class for shared use
+            //NavigationClass = new Navigation(); // create the navigation class for shared use
             UsersCollection = new ObservableCollection<User>(); // create the user collection
             UsersCollection.Add(new User("admin","1234"));
             _customers = new ObservableCollection<Customer>()
@@ -84,7 +84,7 @@ namespace ABBLicensApp.Common
             get { return _instance; }
         }
 
-        public Navigation NavigationClass { get; set; } // properties for navigation class
+     //   public Navigation NavigationClass { get; set; } // properties for navigation class
 
         
 
