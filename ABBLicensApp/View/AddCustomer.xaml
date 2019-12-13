@@ -42,23 +42,23 @@
             <TextBlock Text="Register Customer" HorizontalAlignment="Center" FontSize="21" FontWeight="Bold" Margin="20"/>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Customer"/>
-                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Name}"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Name , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Addr"/>
-                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Addr}"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Addr , Mode=TwoWay}"/>
             </StackPanel>
                 <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Contact"/>
-                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Contact}"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Contact , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Phone"/>
-                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Phone}"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Phone , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="E-mail"/>
-                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Email}"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Email , Mode=TwoWay}"/>
             </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
                     <Button Content="Create" Style="{StaticResource BlueButtonCustom}" Command="{Binding RegisterCustomerBtn}"/>
