@@ -18,6 +18,14 @@ namespace ABBLicensApp.Viewmodel
             Shared = StaticClassSingleton.Instance;
             NewSupplierBtn = new RelayCommand(NewSupplierNav);
             EditSupplierBtn = new RelayCommand(EditSupplierB);
+            GoToSelectedBtn = new RelayCommand(GoToLicens);
+        }
+
+        public RelayCommand GoToSelectedBtn { get; set; }
+
+        private void GoToLicens()
+        {
+            Navigation.GoToPage("Licens");
         }
 
         public RelayCommand EditSupplierBtn { get; set; }

@@ -22,6 +22,7 @@ namespace ABBLicensApp.Common
         private ObservableCollection<License> _licenses;
         private ObservableCollection<Supplier> _suppliers;
         private Supplier _selectedSupplier;
+        private License _selectedLicens;
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
@@ -52,6 +53,17 @@ namespace ABBLicensApp.Common
             {
                 if (Equals(value, _selectedSupplier)) return;
                 _selectedSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public License SelectedLicens
+        {
+            get => _selectedLicens;
+            set
+            {
+                if (Equals(value, _selectedLicens)) return;
+                _selectedLicens = value;
                 OnPropertyChanged();
             }
         }

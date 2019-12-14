@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace ABBLicensApp.Model
 {
@@ -8,6 +9,7 @@ namespace ABBLicensApp.Model
         protected string _supplierName;
         protected DateTime _startDate;
         private int _id;
+        private ObservableCollection<Customer> _customersAtProducts = new ObservableCollection<Customer>();
 
         public Product(string productName, string supplierName, DateTime startDate)
         {

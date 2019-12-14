@@ -1,20 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Dynamic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
+using License = ABBLicensApp.Model.License;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class CustomerViewModel
+    public class CustomerViewModel : INotifyPropertyChanged
     {
+        private string _newNote;
+        private string _selectedNote;
         private Customer _customer;
 
         public CustomerViewModel()
         {
             Shared = StaticClassSingleton.Instance;
+            GoBack = new RelayCommand(BackBtn);
+            AddBtn = new RelayCommand(AddComment);
+            DeleteNote = new RelayCommand(DeleteNoteBtn);
             Customer = Shared.SelectedCustomer;
             Customer.Products = new List<Product>
             {
@@ -22,17 +32,82 @@ namespace ABBLicensApp.Viewmodel
                 new License(DateTime.Parse("2013-12-01"), DateTime.Parse("2020-01-15"), 50, "SDJAKLSD-weqewqe", "Windows"),
                 new License(DateTime.Parse("2016-07-14"), DateTime.Parse("2022-12-18"), 20, "KSJDLKASJDKLASD", "Cisco")
             };
+            Customer.Notes.Add("Hej");
+            Customer.Notes.Add("test");
+        }
+
+        public RelayCommand DeleteNote { get; set; }
+
+        private void DeleteNoteBtn()
+        {
+            
+                Customer.Notes.Remove(SelectedNote);
+            
+            //foreach (var a in Customer.Notes)
+            //{
+            //    if (SelectedNote!= null && a.Contains(SelectedNote))
+            //    {
+            //        Customer.Notes.Remove(a);
+            //    }
+            //}
+        }
+
+        public string SelectedNote
+        {
+            get => _selectedNote;
+            set
+            {
+                if (value == _selectedNote) return;
+                _selectedNote = value;
+            }
+        }
+
+        public RelayCommand AddBtn { get; set; }
+
+        public string NewNote
+        {
+            get => _newNote;
+            set
+            {
+                if (value == _newNote) return;
+                _newNote = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand GoBack { get; set; }
+
+        private void BackBtn()
+        {
+            Navigation.GoBack();
         }
 
         public StaticClassSingleton Shared { get; }
-        
-        public Customer Customer 
-        { 
-            get => _customer; 
-            set => _customer = value; 
+
+        public Customer Customer
+        {
+            get => _customer;
+            set
+            {
+                if (Equals(value, _customer)) return;
+                _customer = value;
+                
+            }
         }
 
+        public void AddComment()
+        {
+            Customer.Notes.Add(NewNote);
+            NewNote = "";
+        }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
 

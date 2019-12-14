@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using ABBLicensApp.Annotations;
 
 namespace ABBLicensApp.Model
 {
-    public class Customer
+    public class Customer : INotifyPropertyChanged
     {
         private string _companyName;
         private string _address;
         private string _email;
         private int _id;
-        private List<string> _notes;
+        private ObservableCollection<string> _notes;
         private List<Product> _products;
         private string _phoneNumber;
         private string _contactName;
@@ -19,7 +23,7 @@ namespace ABBLicensApp.Model
             _companyName = companyName;
             _address = address;
             _email = email;
-            _notes = new List<string>();
+            _notes = new ObservableCollection<string>();
             _phoneNumber = phoneNumber;
             _contactName = contactName;
             _products = new List<Product>();
@@ -49,10 +53,15 @@ namespace ABBLicensApp.Model
             set => _id = value;
         }
 
-        public List<string> Notes
+        public ObservableCollection<string> Notes
         {
             get => _notes;
-            set => _notes = value;
+            set
+            {
+                if (Equals(value, _notes)) return;
+                _notes = value;
+                OnPropertyChanged();
+            }
         }
 
         public List<Product> Products
@@ -92,6 +101,14 @@ namespace ABBLicensApp.Model
         public void DeleteComments()
         {
             throw new System.NotImplementedException();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

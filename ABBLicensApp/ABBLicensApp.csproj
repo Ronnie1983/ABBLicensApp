@@ -131,10 +131,12 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Viewmodel\AddCustomerViewModel.cs" />
     <Compile Include="Viewmodel\AddSupplierViewModel.cs" />
+    <Compile Include="Viewmodel\ConnectNewLicenseViewModel.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
     <Compile Include="Viewmodel\CustomerViewModel.cs" />
     <Compile Include="Viewmodel\EditSupplierViewModel.cs" />
     <Compile Include="Viewmodel\LicensesViewModel.cs" />
+    <Compile Include="Viewmodel\LicensViewModel.cs" />
     <Compile Include="Viewmodel\LoginSucceedViewModel.cs" />
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
@@ -145,6 +147,9 @@
     <Compile Include="View\AddSupplier.xaml.cs">
       <DependentUpon>AddSupplier.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ConnectNewLicens.xaml.cs">
+      <DependentUpon>ConnectNewLicens.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Customer.xaml.cs">
       <DependentUpon>Customer.xaml</DependentUpon>
     </Compile>
@@ -153,6 +158,9 @@
     </Compile>
     <Compile Include="View\EditSupplier.xaml.cs">
       <DependentUpon>EditSupplier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Licens.xaml.cs">
+      <DependentUpon>Licens.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Licenses.xaml.cs">
       <DependentUpon>Licenses.xaml</DependentUpon>
@@ -206,6 +214,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ConnectNewLicens.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EditSupplier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Licens.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

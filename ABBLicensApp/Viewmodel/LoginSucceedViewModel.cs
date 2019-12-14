@@ -14,6 +14,14 @@ namespace ABBLicensApp.Viewmodel
         {
             CustomerBtn = new RelayCommand(GotoCustomerList);
             LicensesBtn = new RelayCommand(GoToLicenses);
+            ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
+        }
+
+        public RelayCommand ConnectLicenseBtn { get; set; }
+
+        private void GoToAddLicense()
+        {
+            Navigation.GoToPage("ConnectNewLicens");
         }
 
         public RelayCommand LicensesBtn { get; set; }
