@@ -27,6 +27,9 @@ namespace ABBLicensApp.View
             this.InitializeComponent();
         }
 
-       
+        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

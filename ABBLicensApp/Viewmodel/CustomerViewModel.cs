@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Dynamic;
-using System.Linq;
+using System.IO;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
+using Newtonsoft.Json;
 using License = ABBLicensApp.Model.License;
 
 namespace ABBLicensApp.Viewmodel
@@ -18,6 +16,8 @@ namespace ABBLicensApp.Viewmodel
         private string _newNote;
         private string _selectedNote;
         private Customer _customer;
+
+
 
         public CustomerViewModel()
         {
@@ -36,13 +36,14 @@ namespace ABBLicensApp.Viewmodel
             Customer.Notes.Add("test");
         }
 
+
         public RelayCommand DeleteNote { get; set; }
 
         private void DeleteNoteBtn()
         {
-            
-                Customer.Notes.Remove(SelectedNote);
-            
+
+            Customer.Notes.Remove(SelectedNote);
+
             //foreach (var a in Customer.Notes)
             //{
             //    if (SelectedNote!= null && a.Contains(SelectedNote))
@@ -66,7 +67,7 @@ namespace ABBLicensApp.Viewmodel
 
         public string NewNote
         {
-            get => _newNote;
+            get => _newNote ?? ""; //Hvis newNote == null så sæt dens værdi til ""
             set
             {
                 if (value == _newNote) return;
@@ -91,14 +92,17 @@ namespace ABBLicensApp.Viewmodel
             {
                 if (Equals(value, _customer)) return;
                 _customer = value;
-                
+
             }
         }
 
         public void AddComment()
         {
-            Customer.Notes.Add(NewNote);
-            NewNote = "";
+            if (NewNote.Length > 0)
+            {
+                Customer.Notes.Add(NewNote);
+                NewNote = "";
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ABBLicensApp.Model;
-using ABBLicensApp.View;
+﻿using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
