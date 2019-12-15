@@ -26,11 +26,10 @@ namespace ABBLicensApp.Viewmodel
 
         private void EditSupplierB()
         {
-            if (Shared.SelectedSupplier != null)
+            if (Shared.SelectedLicensSupplier != null)
             {
                 Navigation.GoToPage("EditSupplier");
             }
-            
         }
 
         private void NewSupplierNav()
@@ -50,15 +49,21 @@ namespace ABBLicensApp.Viewmodel
             Navigation.GoBack();
         }
 
-        public ObservableCollection<Supplier> Suppliers
+        public ObservableCollection<LicensSupplier> Suppliers
         {
-            get => Shared.Suppliers;
+            get => Shared.LicensSupplier;
         }
 
-        public Supplier SelectedSupplier
+        public ObservableCollection<LicensSupplier> LicensSupplier
         {
-            get => Shared.SelectedSupplier;
-            set => Shared.SelectedSupplier = value;
+            get => Shared.LicensSupplier;
+        }
+
+
+        public LicensSupplier SelectedSupplier
+        {
+            get => Shared.SelectedLicensSupplier;
+            set => Shared.SelectedLicensSupplier = value;
         }
     }
 }

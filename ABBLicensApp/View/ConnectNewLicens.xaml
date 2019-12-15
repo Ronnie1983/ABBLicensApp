@@ -63,8 +63,8 @@
 
         <Border Grid.Row="2" Grid.Column="1" BorderThickness="1" BorderBrush="Gray" Margin="10" Background="White">
             <StackPanel>
-                <TextBlock Text="{Binding SelectedSupplier.Name}"/>
-                <ListView ItemsSource="{Binding Suppliers}" SelectedItem="{Binding SelectedSupplier , Mode=TwoWay}">
+                <TextBlock Text="{Binding SelectedLicensSupplier.Name}"/>
+                <ListView ItemsSource="{Binding LicensSupplier}" SelectedItem="{Binding SelectedLicensSupplier , Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Name}" Margin="10" />
@@ -76,25 +76,25 @@
 
         <StackPanel Grid.Row="2" Grid.Column="2">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Licensekey"/>
-                <TextBox Text="{Binding NewKey , Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Licensekey"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding NewKey , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Units"/>
-                <TextBox Text="{Binding NewUnits , Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Units"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding NewUnits , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Startdate"/>
-                <TextBox Text="{Binding StartDate , Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Startdate"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding StartDate , Mode=TwoWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Expiredate"/>
-                <TextBox Text="{Binding ExpireDate , Mode=TwoWay}"/>
+                <TextBlock Style="{StaticResource TextBlockStyleCustom}" Text="Expiredate"/>
+                <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding ExpireDate , Mode=TwoWay}"/>
             </StackPanel>
         </StackPanel>
 
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,50,0" VerticalAlignment="Center">
-            <Button Style="{StaticResource BlueButtonCustom}" Content="Delete" MinWidth="120" Background="Green"/>
+            <Button Style="{StaticResource BlueButtonCustom}" Content="Cancel" MinWidth="120" Background="Red" Command="{Binding GoBack}"/>
             <Button Style="{StaticResource BlueButtonCustom}" Content="Create" MinWidth="120" Command="{Binding CreateBtn}"/>
         </StackPanel>
         

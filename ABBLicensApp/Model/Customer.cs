@@ -29,6 +29,17 @@ namespace ABBLicensApp.Model
             _products = new List<Product>();
         }
 
+        public Customer()
+        {
+            _companyName = "ABB";
+            _address = "Meterbuen 33";
+            _email = "fem@to.dk";
+            _notes = new ObservableCollection<string>();
+            _phoneNumber = "12345678";
+            _contactName = "Allan";
+            _products = new List<Product>();
+        }
+
         public string CompanyName
         {
             get => _companyName;

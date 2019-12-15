@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using Windows.UI.Composition.Interactions;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
 using Newtonsoft.Json;
-using License = ABBLicensApp.Model.License;
+using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -17,8 +18,6 @@ namespace ABBLicensApp.Viewmodel
         private string _selectedNote;
         private Customer _customer;
 
-
-
         public CustomerViewModel()
         {
             Shared = StaticClassSingleton.Instance;
@@ -26,12 +25,6 @@ namespace ABBLicensApp.Viewmodel
             AddBtn = new RelayCommand(AddComment);
             DeleteNote = new RelayCommand(DeleteNoteBtn);
             Customer = Shared.SelectedCustomer;
-            Customer.Products = new List<Product>
-            {
-                new License(DateTime.Parse("2015-10-20"), DateTime.Parse("2020-01-01"), 100, "KSJDLKASJDKLASD", "McAfee"),
-                new License(DateTime.Parse("2013-12-01"), DateTime.Parse("2020-01-15"), 50, "SDJAKLSD-weqewqe", "Windows"),
-                new License(DateTime.Parse("2016-07-14"), DateTime.Parse("2022-12-18"), 20, "KSJDLKASJDKLASD", "Cisco")
-            };
             Customer.Notes.Add("Hej");
             Customer.Notes.Add("test");
         }
@@ -41,16 +34,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void DeleteNoteBtn()
         {
-
             Customer.Notes.Remove(SelectedNote);
-
-            //foreach (var a in Customer.Notes)
-            //{
-            //    if (SelectedNote!= null && a.Contains(SelectedNote))
-            //    {
-            //        Customer.Notes.Remove(a);
-            //    }
-            //}
         }
 
         public string SelectedNote

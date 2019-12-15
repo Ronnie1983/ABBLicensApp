@@ -33,7 +33,7 @@ namespace ABBLicensApp.Viewmodel
 
         public void AddBtn()
         {
-            Shared.Suppliers.Add(new Supplier(Name));
+            Shared.LicensSupplier.Add(new LicensSupplier(Name));
             Navigation.GoBack();
         }
     }

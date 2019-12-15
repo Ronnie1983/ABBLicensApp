@@ -42,33 +42,44 @@
             </Image>
         </Button>
 
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" Margin="0,0,50,0" VerticalAlignment="Center">
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="370,14,0,0" VerticalAlignment="Top">
             <Button Style="{StaticResource BlueButtonCustom}" Content="Chance" MinWidth="120" Background="Green"/>
-            <Button Style="{StaticResource BlueButtonCustom}" Content="Delete" MinWidth="120"/>
+            <Button Style="{StaticResource BlueButtonCustom}" Content="Delete" MinWidth="120" Command="{Binding DeleteBtn}"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="{Binding Shared.SelectedSupplier.Name}" Margin="10" FontSize="50" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Shared.SelectedLicensSupplier.Name}" Margin="10" FontSize="50" HorizontalAlignment="Center"/>
             <TextBox MinWidth="400"/>
         </StackPanel>
 
         <Border Grid.Column="0" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="1" Padding="5" Margin="10,10,10,10" Grid.ColumnSpan="3">
-            <GridView ItemsSource="{Binding SelectedSupplier.LicensesAtSupplier}" SelectedItem="{Binding SelectedLicense, Mode=TwoWay}">
-                <GridView.ItemTemplate>
-
+            <ListView ItemsSource="{Binding NewList}" SelectedItem="{Binding SelectedLicens, Mode=TwoWay}">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Black" Height="80" Width="400" Background="Gainsboro">
-                            <StackPanel Orientation="Vertical">
-                                <TextBlock Text="{Binding Name}" FontSize="25" Margin="10,5,0,0" FontWeight="Bold"/>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Key: "/>
+                                <TextBlock Text="{Binding LicenseKey}"/>
                             </StackPanel>
-                        </Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Customer: "/>
+                                <TextBlock Text="{Binding Customer}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Startdate: "/>
+                                <TextBlock Text="{Binding StartDate}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Expires: "/>
+                                <TextBlock Text="{Binding ExpireDate}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Units: "/>
+                                <TextBlock Text="{Binding Units}"/>
+                            </StackPanel>
+                        </StackPanel>
                     </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid ItemWidth="450" ItemHeight="100" MaximumRowsOrColumns="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
+                </ListView.ItemTemplate>
+            </ListView>
         </Border>
 
 

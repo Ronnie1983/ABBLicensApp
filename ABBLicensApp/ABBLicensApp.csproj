@@ -124,7 +124,8 @@
     <Compile Include="Model\JsonDataBase.cs" />
     <Compile Include="Model\JsonReader.cs" />
     <Compile Include="Model\JsonWriter.cs" />
-    <Compile Include="Model\License.cs" />
+    <Compile Include="Model\Licens.cs" />
+    <Compile Include="Model\LicensSupplier.cs" />
     <Compile Include="Model\Navigation.cs" />
     <Compile Include="Model\RelayCommand.cs" />
     <Compile Include="Model\Supplier.cs" />

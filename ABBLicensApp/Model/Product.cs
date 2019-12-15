@@ -6,20 +6,28 @@ namespace ABBLicensApp.Model
     public class Product
     {
         protected string _productName;
-        protected string _supplierName;
+        protected Customer _customer;
         protected DateTime _startDate;
+        private Supplier _supplier;
         private int _id;
         private ObservableCollection<Customer> _customersAtProducts = new ObservableCollection<Customer>();
 
-        public Product(string productName, string supplierName, DateTime startDate)
+        public Product(string productName, Customer customer, DateTime startDate, Supplier supplier)
         {
+            Supplier = supplier;
             ProductName = productName;
-            SupplierName = supplierName;
+            Customer = customer;
             StartDate = startDate;
         }
 
         public string ProductName { get => _productName; set => _productName = value; }
-        public string SupplierName { get => _supplierName; set => _supplierName = value; }
+        public Customer Customer { get => _customer; set => _customer = value; }
         public DateTime StartDate { get => _startDate; set => _startDate = value; }
+
+        public Supplier Supplier
+        {
+            get => _supplier;
+            set => _supplier = value;
+        }
     }
 }

@@ -2,15 +2,18 @@
 
 namespace ABBLicensApp.Model
 {
-    public class License : Product
+    public class Licens : Product
     {
         private DateTime _expireDate;
         private int _units;
         private string _licenseKey;
+        private Supplier _supplier;
         
-        public License(DateTime startDate, DateTime expireDate, int units, string licenseKey, string supplierName)
-        :base("License", supplierName, startDate)
+        private static string productName = "Licens";
+
+        public Licens(string licenseKey, int units, DateTime expireDate, Customer customer, DateTime startDate, Supplier supplier) : base(productName, customer, startDate, supplier)
         {
+            _supplier = supplier;
             _expireDate = expireDate;
             _units = units;
             _licenseKey = licenseKey;
@@ -32,6 +35,12 @@ namespace ABBLicensApp.Model
         {
             get => _licenseKey;
             set => _licenseKey = value;
+        }
+
+        public Supplier Supplier
+        {
+            get => _supplier;
+            set => _supplier = value;
         }
     }
 

@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
+using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -14,6 +15,7 @@ namespace ABBLicensApp.Viewmodel
         private int _newUnits;
         private DateTime _expireDate;
         private DateTime _startDate;
+        private Licens _currentLicense;
 
         public ConnectNewLicenseViewModel()
         {
@@ -28,6 +30,10 @@ namespace ABBLicensApp.Viewmodel
         {
             // ToDo Add customer to supplier
             // ToDo Add License to Customer
+            _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
+
+            Shared.Products.Add(_currentLicense);
+            Navigation.GoBack();
         }
 
         public RelayCommand GoBack { get; set; }
@@ -39,10 +45,10 @@ namespace ABBLicensApp.Viewmodel
 
         public StaticClassSingleton Shared { get; }
 
-        public ObservableCollection<Supplier> Suppliers
+        public ObservableCollection<LicensSupplier> LicensSupplier
         {
-            get => Shared.Suppliers;
-            set => Shared.Suppliers = value;
+            get => Shared.LicensSupplier;
+            set => Shared.LicensSupplier = value;
         }
 
         public ObservableCollection<Customer> Customers
@@ -61,12 +67,12 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public Supplier SelectedSupplier
+        public LicensSupplier SelectedLicensSupplier
         {
-            get => Shared.SelectedSupplier;
+            get => Shared.SelectedLicensSupplier;
             set
             {
-                Shared.SelectedSupplier = value;
+                Shared.SelectedLicensSupplier = value;
                 OnPropertyChanged();
             }
         }

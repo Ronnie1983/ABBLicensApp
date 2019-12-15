@@ -19,9 +19,11 @@ namespace ABBLicensApp.Common
         private string _currentUser;
         private Customer _selectedCustomer;
         private ObservableCollection<Customer> _customers;
-        private ObservableCollection<License> _licenses;
-        private ObservableCollection<Supplier> _suppliers;
-        private Supplier _selectedSupplier;
+ //       private ObservableCollection<Licens> _licenses;
+        private ObservableCollection<Product> _products;
+      
+        private ObservableCollection<LicensSupplier> _licensSupplier;
+        private LicensSupplier _selectedLicensSupplier;
         private License _selectedLicens;
 
         private StaticClassSingleton() // part of singleton. Set to private.
@@ -29,7 +31,16 @@ namespace ABBLicensApp.Common
             //NavigationClass = new Navigation(); // create the navigation class for shared use
             UsersCollection = new ObservableCollection<User>(); // create the user collection
             UsersCollection.Add(new User("admin","1234"));
-            _customers = new ObservableCollection<Customer>()
+            Products = new ObservableCollection<Product>();
+            {
+                new Licens("fdsfes", 20, DateTime.Parse("2015-10-10"), new Customer(), DateTime.Parse("2015-10-20"), new LicensSupplier());
+
+            }
+            //Licenses = new ObservableCollection<License>();
+            //{
+                
+            //}
+            Customers = new ObservableCollection<Customer>()
             {
                 new Customer("Roskilde Vand Forsyning", "vandgade 12", "ros@vand.com", "22334456", "Jan"),
                 new Customer("Holbæk Ild Forsyning", "ilddgade 12", "hold@ild.com", "66671122", "Torkild"),
@@ -38,21 +49,44 @@ namespace ABBLicensApp.Common
                 new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor"),
                 new Customer("Vanløse Jord Forsyning", "jordgade 12", "van@jord.com", "12341234", "Thor")
             };
-            Suppliers = new ObservableCollection<Supplier>()
+
+            LicensSupplier = new ObservableCollection<LicensSupplier>()
             {
-                new Supplier("McAfee"),
-                new Supplier("Cisco"),
-                new Supplier("Microsoft")
+                new LicensSupplier("Cisco"),
+                new LicensSupplier("Microsoft"),
+                new LicensSupplier("McAfee")
             };
         }
 
-        public Supplier SelectedSupplier
+        public ObservableCollection<LicensSupplier> LicensSupplier
         {
-            get => _selectedSupplier;
+            get => _licensSupplier;
             set
             {
-                if (Equals(value, _selectedSupplier)) return;
-                _selectedSupplier = value;
+                if (Equals(value, _licensSupplier)) return;
+                _licensSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Product> Products
+        {
+            get => _products;
+            set
+            {
+                if (Equals(value, _products)) return;
+                _products = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public LicensSupplier SelectedLicensSupplier
+        {
+            get => _selectedLicensSupplier;
+            set
+            {
+                if (Equals(value, _selectedLicensSupplier)) return;
+                _selectedLicensSupplier = value;
                 OnPropertyChanged();
             }
         }
@@ -68,27 +102,16 @@ namespace ABBLicensApp.Common
             }
         }
 
-        public ObservableCollection<Supplier> Suppliers
-        {
-            get => _suppliers;
-            set
-            {
-                if (Equals(value, _suppliers)) return;
-                _suppliers = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ObservableCollection<License> Licenses
-        {
-            get => _licenses;
-            set
-            {
-                if (Equals(value, _licenses)) return;
-                _licenses = value;
-                OnPropertyChanged();
-            }
-        }
+        //public ObservableCollection<Licens> Licenses
+        //{
+        //    get => _licenses;
+        //    set
+        //    {
+        //        if (Equals(value, _licenses)) return;
+        //        _licenses = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public ObservableCollection<Customer> Customers
         {

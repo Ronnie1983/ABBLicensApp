@@ -14,7 +14,7 @@ namespace ABBLicensApp.Viewmodel
         {
             Shared = StaticClassSingleton.Instance;
             EditBtn = new RelayCommand(EditMethod);
-            _name = Shared.SelectedSupplier.Name;
+            _name = Shared.SelectedLicensSupplier.Name;
             GoBackBtn = new RelayCommand(Cancel);
         }
 
@@ -30,9 +30,9 @@ namespace ABBLicensApp.Viewmodel
         private void EditMethod()
         {
             //Shared.Suppliers.Where((supplier) => supplier.Name == Shared.SelectedSupplier.Name);
-            foreach (var a in Shared.Suppliers)
+            foreach (var a in Shared.LicensSupplier)
             {
-                if (a.Name == Shared.SelectedSupplier.Name)
+                if (a.Name == Shared.SelectedLicensSupplier.Name)
                 {
                     a.Name = Name;
                 }

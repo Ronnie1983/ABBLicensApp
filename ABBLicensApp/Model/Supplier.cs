@@ -13,22 +13,15 @@ namespace ABBLicensApp.Model
     public class Supplier : INotifyPropertyChanged
     {
         private string _name;
-        private ObservableCollection<Product> _licensesAtSupplier = new ObservableCollection<Product>();
 
         public Supplier(string name)
         {
             Name = name;
         }
 
-        public ObservableCollection<Product> LicensesAtSupplier
+        public Supplier()
         {
-            get => _licensesAtSupplier;
-            set
-            {
-                if (Equals(value, _licensesAtSupplier)) return;
-                _licensesAtSupplier = value;
-                OnPropertyChanged();
-            }
+            Name = "Random";
         }
 
         public string Name
