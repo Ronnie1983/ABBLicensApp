@@ -28,14 +28,11 @@ namespace ABBLicensApp.Viewmodel
             EditBtn = new RelayCommand(Edit);
             Customer = Shared.SelectedCustomer;
             ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
-            RefreshBtn = new RelayCommand(Refresh);
         }
 
         public RelayCommand EditBtn { get; set; }
 
         public RelayCommand ConnectLicenseBtn { get; set; }
-
-        public RelayCommand RefreshBtn { get; set; }
 
         public RelayCommand GoToHomepage { get; set; }
 
@@ -58,6 +55,8 @@ namespace ABBLicensApp.Viewmodel
                 if (value == _selectedSupplier) return;
                 _selectedSupplier = value;
                 OnPropertyChanged();
+                FilteredLicenses.Clear();
+                OnPropertyChanged(nameof(FilteredLicenses));
             }
         }
 
@@ -175,12 +174,6 @@ namespace ABBLicensApp.Viewmodel
         private void GoHome()
         {
             Navigation.GoToPage("LoginSucceed");
-        }
-
-        private void Refresh()
-        {
-            FilteredLicenses.Clear();
-            OnPropertyChanged(nameof(FilteredLicenses));
         }
 
         private void GoToAddLicense()

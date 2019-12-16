@@ -19,9 +19,11 @@ namespace ABBLicensApp.Common
         private string _currentUser;
         private Customer _selectedCustomer;
         private ObservableCollection<Customer> _customers;
+
+        private ObservableCollection<Customer> _filteredCustomers;
  //       private ObservableCollection<Licens> _licenses;
         private ObservableCollection<Product> _products;
-      
+        private string _searchCustomerText;
         private ObservableCollection<LicensSupplier> _licensSupplier;
         private LicensSupplier _selectedLicensSupplier;
         private License _selectedLicens;
@@ -65,6 +67,28 @@ namespace ABBLicensApp.Common
             {
                 if (Equals(value, _licensSupplier)) return;
                 _licensSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SearchCustomerText
+        {
+            get => _searchCustomerText;
+            set
+            {
+                if (value == _searchCustomerText) return;
+                _searchCustomerText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<Customer> FilteredCustomers
+        {
+            get { return Filter.FilterValues(Customers, new CustomerNameFilter()); }
+            set
+            {
+                if (Equals(value, _filteredCustomers)) return;
+                _filteredCustomers = value;
                 OnPropertyChanged();
             }
         }

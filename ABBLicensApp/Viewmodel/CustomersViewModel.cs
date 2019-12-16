@@ -1,10 +1,13 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class CustomersViewModel
+    public class CustomersViewModel : INotifyPropertyChanged
     {
         public CustomersViewModel()
         {
@@ -26,6 +29,27 @@ namespace ABBLicensApp.Viewmodel
         {
             get => Shared.SelectedCustomer;
             set => Shared.SelectedCustomer = value;
+        }
+
+        public string SearchCustomerText
+        {
+            get { return Shared.SearchCustomerText; }
+            set
+            {
+                Shared.SearchCustomerText = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(FilteredCustomers));
+            }
+        }
+
+        public ObservableCollection<Customer> FilteredCustomers
+        {
+            get => Shared.FilteredCustomers;
+            set
+            {
+                Shared.FilteredCustomers = value;
+                OnPropertyChanged();
+            } 
         }
 
         public ObservableCollection<Customer> Customers
@@ -50,6 +74,14 @@ namespace ABBLicensApp.Viewmodel
         public void GoBackOnePage()
         {
             Navigation.GoBack();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
