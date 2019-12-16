@@ -29,8 +29,7 @@ namespace ABBLicensApp.Viewmodel
             AddBtn = new RelayCommand(AddComment);
             DeleteNote = new RelayCommand(DeleteNoteBtn);
             Customer = Shared.SelectedCustomer;
-            //Customer.Notes.Add("Hej");
-            //Customer.Notes.Add("test");
+            
         }
 
 
@@ -79,7 +78,11 @@ namespace ABBLicensApp.Viewmodel
                 _activeLicenses = value;
                 OnPropertyChanged();
             }
+
+
         }
+
+
 
         public string SelectedNote
         {
