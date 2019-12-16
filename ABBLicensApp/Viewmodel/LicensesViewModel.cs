@@ -17,12 +17,39 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand GoToSelectedBtn { get; set; }
 
+        public RelayCommand EditSupplierBtn { get; set; }
+
+        public RelayCommand NewSupplierBtn { get; set; }
+
+        public StaticClassSingleton Shared { get; }
+
+        public RelayCommand GoBack { get; set; }
+
+        public ObservableCollection<LicensSupplier> Suppliers
+        {
+            get => Shared.LicensSupplier;
+        }
+
+        public ObservableCollection<LicensSupplier> LicensSupplier
+        {
+            get => Shared.LicensSupplier;
+        }
+
+        public LicensSupplier SelectedSupplier
+        {
+            get => Shared.SelectedLicensSupplier;
+            set => Shared.SelectedLicensSupplier = value;
+        }
+
         private void GoToLicens()
         {
             Navigation.GoToPage("Licens");
         }
 
-        public RelayCommand EditSupplierBtn { get; set; }
+        private void GoBackToMain()
+        {
+            Navigation.GoBack();
+        }
 
         private void EditSupplierB()
         {
@@ -35,35 +62,6 @@ namespace ABBLicensApp.Viewmodel
         private void NewSupplierNav()
         {
             Navigation.GoToPage("AddSupplier");
-        }
-
-        public RelayCommand NewSupplierBtn { get; set; }
-
-        public StaticClassSingleton Shared { get; }
-
-
-        public RelayCommand GoBack { get; set; }
-
-        private void GoBackToMain()
-        {
-            Navigation.GoBack();
-        }
-
-        public ObservableCollection<LicensSupplier> Suppliers
-        {
-            get => Shared.LicensSupplier;
-        }
-
-        public ObservableCollection<LicensSupplier> LicensSupplier
-        {
-            get => Shared.LicensSupplier;
-        }
-
-
-        public LicensSupplier SelectedSupplier
-        {
-            get => Shared.SelectedLicensSupplier;
-            set => Shared.SelectedLicensSupplier = value;
         }
     }
 }

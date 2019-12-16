@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Runtime.CompilerServices;
-using Windows.UI.Composition.Interactions;
-using ABBLicensApp.Annotations;
+﻿using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
-using ABBLicensApp.View;
-using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Customer = ABBLicensApp.Model.Customer;
-using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -37,32 +29,13 @@ namespace ABBLicensApp.Viewmodel
             Customer = Shared.SelectedCustomer;
             ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
             RefreshBtn = new RelayCommand(Refresh);
-            //SelectedSupplier = "Cisco";
-            //Customer.Notes.Add("Hej");
-            //Customer.Notes.Add("test");
         }
 
         public RelayCommand EditBtn { get; set; }
 
-        private void Edit()
-        {
-            Navigation.GoToPage("EditCustomer");
-        }
-
         public RelayCommand ConnectLicenseBtn { get; set; }
 
-        private void GoToAddLicense()
-        {
-            Navigation.GoToPage("ConnectNewLicens");
-        }
-
         public RelayCommand RefreshBtn { get; set; }
-
-        private void Refresh()
-        {
-            FilteredLicenses.Clear();
-            OnPropertyChanged(nameof(FilteredLicenses));
-        }
 
         public RelayCommand GoToHomepage { get; set; }
 
@@ -88,18 +61,7 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void GoHome()
-        {
-            Navigation.GoToPage("LoginSucceed");
-        }
-
-
         public RelayCommand DeleteNote { get; set; }
-
-        private void DeleteNoteBtn()
-        {
-            Customer.Notes.Remove(SelectedNote);
-        }
 
         public ObservableCollection<Product> FilteredLicenses
         {
@@ -172,11 +134,6 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand GoBack { get; set; }
 
-        private void BackBtn()
-        {
-            Navigation.GoBack();
-        }
-
         public StaticClassSingleton Shared { get; }
 
         public Customer Customer
@@ -198,6 +155,37 @@ namespace ABBLicensApp.Viewmodel
                 Customer.Notes.Add(NewNote);
                 NewNote = "";
             }
+        }
+
+        private void Edit()
+        {
+            Navigation.GoToPage("EditCustomer");
+        }
+
+        private void BackBtn()
+        {
+            Navigation.GoBack();
+        }
+
+        private void DeleteNoteBtn()
+        {
+            Customer.Notes.Remove(SelectedNote);
+        }
+
+        private void GoHome()
+        {
+            Navigation.GoToPage("LoginSucceed");
+        }
+
+        private void Refresh()
+        {
+            FilteredLicenses.Clear();
+            OnPropertyChanged(nameof(FilteredLicenses));
+        }
+
+        private void GoToAddLicense()
+        {
+            Navigation.GoToPage("ConnectNewLicens");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

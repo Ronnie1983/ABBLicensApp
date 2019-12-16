@@ -13,12 +13,14 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand ConnectLicenseBtn { get; set; }
 
+        public RelayCommand LicensesBtn { get; set; }
+
+        public RelayCommand CustomerBtn { get; set; }
+
         private void GoToAddLicense()
         {
             Navigation.GoToPage("ConnectNewLicens");
         }
-
-        public RelayCommand LicensesBtn { get; set; }
 
         private void GoToLicenses()
         {
@@ -29,7 +31,5 @@ namespace ABBLicensApp.Viewmodel
         {
             Navigation.GoToPage("Customers");
         }
-
-        public RelayCommand CustomerBtn { get; set; }
     }
 }

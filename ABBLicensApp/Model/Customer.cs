@@ -1,9 +1,8 @@
-﻿using System;
+﻿using ABBLicensApp.Annotations;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ABBLicensApp.Annotations;
 
 namespace ABBLicensApp.Model
 {
@@ -91,27 +90,6 @@ namespace ABBLicensApp.Model
         {
             get => _contactName;
             set => _contactName = value;
-        }
-
-
-        public void AddProduct()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void RemoveProduct()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void AddComments()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DeleteComments()
-        {
-            throw new System.NotImplementedException();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

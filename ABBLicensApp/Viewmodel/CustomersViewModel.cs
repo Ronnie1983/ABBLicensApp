@@ -16,28 +16,9 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand NewCustomerBtn { get; set; }
 
-        private void NewCustomer()
-        {
-            Navigation.GoToPage("AddCustomer");
-        }
-
         public RelayCommand GoBack { get; set; }
 
-        public void GoBackOnePage()
-        {
-            Navigation.GoBack();
-        }
-
         public StaticClassSingleton Shared { get; }
-
-        private void GoToCustomerDetails()
-        {
-            if (SelectedCustomer != null)
-            {
-                Navigation.GoToPage("Customer");
-            }
-        }
-
 
         public RelayCommand GoToSelected { get; set; }
 
@@ -51,6 +32,24 @@ namespace ABBLicensApp.Viewmodel
         {
             get => Shared.Customers;
             set => Shared.Customers = value;
+        }
+
+        private void NewCustomer()
+        {
+            Navigation.GoToPage("AddCustomer");
+        }
+
+        private void GoToCustomerDetails()
+        {
+            if (SelectedCustomer != null)
+            {
+                Navigation.GoToPage("Customer");
+            }
+        }
+
+        public void GoBackOnePage()
+        {
+            Navigation.GoBack();
         }
     }
 }

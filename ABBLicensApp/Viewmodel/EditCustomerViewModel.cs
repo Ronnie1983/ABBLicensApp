@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using ABBLicensApp.Annotations;
+﻿using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
-using ABBLicensApp.View;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ABBLicensApp.Viewmodel
 {
     class EditCustomerViewModel : INotifyPropertyChanged
     {
-
         public EditCustomerViewModel()
         {
             CancelThis = new RelayCommand(GoBackCancel);
@@ -23,27 +16,6 @@ namespace ABBLicensApp.Viewmodel
         }
 
         public StaticClassSingleton Shared { get; }
-
-        private void AddCustomer()
-        {
-            foreach (var c in Shared.Customers)
-            {
-                if (c.CompanyName == Shared.SelectedCustomer.CompanyName)
-                {
-                    c.CompanyName = Name;
-                    c.Address = Addr;
-                    c.ContactName = Contact;
-                    c.Email = Email;
-                    c.PhoneNumber = Phone;
-                }
-            }
-            Navigation.GoBack();
-        }
-
-        private void GoBackCancel()
-        {
-            Navigation.GoBack();
-        }
 
         public RelayCommand RegisterCustomerBtn { get; set; }
 
@@ -102,6 +74,27 @@ namespace ABBLicensApp.Viewmodel
                 Shared.SelectedCustomer.Address = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void AddCustomer()
+        {
+            foreach (var c in Shared.Customers)
+            {
+                if (c.CompanyName == Shared.SelectedCustomer.CompanyName)
+                {
+                    c.CompanyName = Name;
+                    c.Address = Addr;
+                    c.ContactName = Contact;
+                    c.Email = Email;
+                    c.PhoneNumber = Phone;
+                }
+            }
+            Navigation.GoBack();
+        }
+
+        private void GoBackCancel()
+        {
+            Navigation.GoBack();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

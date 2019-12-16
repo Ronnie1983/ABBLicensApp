@@ -1,5 +1,4 @@
 ﻿using System;
-using Windows.UI.Xaml.Controls;
 
 namespace ABBLicensApp.Model
 {
@@ -9,7 +8,6 @@ namespace ABBLicensApp.Model
         private int _units;
         private string _licenseKey;
         private Supplier _supplier;
-        
         private static string productName = "Licens";
 
         public Licens(string licenseKey, int units, DateTime expireDate, Customer customer, DateTime startDate, Supplier supplier) : base(productName, customer, startDate, supplier)

@@ -1,11 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using ABBLicensApp.Annotations;
+﻿using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
-using ABBLicensApp.View;
-using Licens = ABBLicensApp.Model.Licens;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -21,14 +19,9 @@ namespace ABBLicensApp.Viewmodel
             Shared = StaticClassSingleton.Instance;
         }
 
-        public RelayCommand DeleteBtn { get; set; }
+        public RelayCommand GoBack { get; set; }
 
-        private void DeleteMethod()
-        {
-            Shared.Products.Remove(SelectedLicens);
-            NewList.Clear();
-            OnPropertyChanged(nameof(NewList));
-        }
+        public RelayCommand DeleteBtn { get; set; }
 
         public StaticClassSingleton Shared { get; }
 
@@ -42,13 +35,6 @@ namespace ABBLicensApp.Viewmodel
         {
             get => _selectedLicense;
             set => _selectedLicense = value;
-        }
-
-        public RelayCommand GoBack { get; set; }
-
-        private void GoBackOne()
-        {
-            Navigation.GoBack();
         }
 
         public ObservableCollection<Product> NewList
@@ -70,6 +56,18 @@ namespace ABBLicensApp.Viewmodel
                 _newList = value;
                 OnPropertyChanged();
             }
+        }
+
+        private void DeleteMethod()
+        {
+            Shared.Products.Remove(SelectedLicens);
+            NewList.Clear();
+            OnPropertyChanged(nameof(NewList));
+        }
+
+        private void GoBackOne()
+        {
+            Navigation.GoBack();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

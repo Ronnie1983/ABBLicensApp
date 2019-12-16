@@ -18,28 +18,11 @@ namespace ABBLicensApp.Viewmodel
             GoBackBtn = new RelayCommand(Cancel);
         }
 
+        public StaticClassSingleton Shared { get; set; }
+
         public RelayCommand GoBackBtn { get; set; }
 
-        private void Cancel()
-        {
-            Navigation.GoBack();
-        }
-
         public RelayCommand EditBtn { get; set; }
-
-        private void EditMethod()
-        {
-            //Shared.Suppliers.Where((supplier) => supplier.Name == Shared.SelectedSupplier.Name);
-            foreach (var a in Shared.LicensSupplier)
-            {
-                if (a.Name == Shared.SelectedLicensSupplier.Name)
-                {
-                    a.Name = Name;
-                }
-            }
-
-            Navigation.GoToPage("Licenses");
-        }
 
         public string Name
         {
@@ -52,7 +35,23 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public StaticClassSingleton Shared { get; set; }
+        private void Cancel()
+        {
+            Navigation.GoBack();
+        }
+
+        private void EditMethod()
+        {
+            foreach (var a in Shared.LicensSupplier)
+            {
+                if (a.Name == Shared.SelectedLicensSupplier.Name)
+                {
+                    a.Name = Name;
+                }
+            }
+
+            Navigation.GoToPage("Licenses");
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

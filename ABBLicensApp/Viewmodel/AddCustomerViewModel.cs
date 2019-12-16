@@ -36,11 +36,7 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand RegisterCustomerBtn { get; set; }
 
-        private void AddCustomer()
-        {
-            Shared.Customers.Add(new Customer(Name, Addr,Email,Phone,Contact));
-            Navigation.GoBack();
-        }
+        public RelayCommand CancelThis { get; set; }
 
         public string Name
         {
@@ -86,13 +82,16 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public RelayCommand CancelThis { get; set; }
-
         private void GoBackCancel()
         {
             Navigation.GoBack();
         }
 
+        private void AddCustomer()
+        {
+            Shared.Customers.Add(new Customer(Name, Addr, Email, Phone, Contact));
+            Navigation.GoBack();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

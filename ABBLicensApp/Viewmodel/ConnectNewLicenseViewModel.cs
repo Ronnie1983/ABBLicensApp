@@ -26,22 +26,7 @@ namespace ABBLicensApp.Viewmodel
 
         public RelayCommand CreateBtn { get; set; }
 
-        private void CreateLicens()
-        {
-            // ToDo Add customer to supplier
-            // ToDo Add License to Customer
-            _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
-
-            Shared.Products.Add(_currentLicense);
-            Navigation.GoBack();
-        }
-
         public RelayCommand GoBack { get; set; }
-
-        private void GoBackHistory()
-        {
-            Navigation.GoBack();
-        }
 
         public StaticClassSingleton Shared { get; }
 
@@ -99,6 +84,21 @@ namespace ABBLicensApp.Viewmodel
         {
             get => _startDate;
             set => _startDate = value;
+        }
+
+        private void CreateLicens()
+        {
+            // ToDo Add customer to supplier
+            // ToDo Add License to Customer
+            _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
+
+            Shared.Products.Add(_currentLicense);
+            Navigation.GoBack();
+        }
+
+        private void GoBackHistory()
+        {
+            Navigation.GoBack();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
