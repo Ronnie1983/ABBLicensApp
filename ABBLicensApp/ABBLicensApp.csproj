@@ -135,6 +135,7 @@
     <Compile Include="Viewmodel\ConnectNewLicenseViewModel.cs" />
     <Compile Include="Viewmodel\CustomersViewModel.cs" />
     <Compile Include="Viewmodel\CustomerViewModel.cs" />
+    <Compile Include="Viewmodel\EditCustomerViewModel.cs" />
     <Compile Include="Viewmodel\EditSupplierViewModel.cs" />
     <Compile Include="Viewmodel\LicensesViewModel.cs" />
     <Compile Include="Viewmodel\LicensViewModel.cs" />
@@ -142,6 +143,9 @@
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
     <Compile Include="Viewmodel\RegistrationSucceedViewModel.cs" />
+    <Compile Include="View\EditCustomer.xaml.cs">
+      <DependentUpon>EditCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AddCustomer.xaml.cs">
       <DependentUpon>AddCustomer.xaml</DependentUpon>
     </Compile>
@@ -207,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\EditCustomer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\AddCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

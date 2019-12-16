@@ -9,7 +9,9 @@ using Windows.UI.Composition.Interactions;
 using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
+using ABBLicensApp.View;
 using Newtonsoft.Json;
+using Customer = ABBLicensApp.Model.Customer;
 using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
@@ -17,10 +19,12 @@ namespace ABBLicensApp.Viewmodel
     public class CustomerViewModel : INotifyPropertyChanged
     {
         private ObservableCollection<string> _activeLicenses = new ObservableCollection<string>();
-        private ObservableCollection<Licens> _filteredLicenses = new ObservableCollection<Licens>();
+        private ObservableCollection<Product> _filteredLicenses = new ObservableCollection<Product>();
+        private Product _selectedProduct;
+        private string _selectedSupplier;
         private string _newNote;
         private string _selectedNote;
-        private Customer _customer;
+      
 
         public CustomerViewModel()
         {
@@ -28,9 +32,65 @@ namespace ABBLicensApp.Viewmodel
             GoBack = new RelayCommand(BackBtn);
             AddBtn = new RelayCommand(AddComment);
             DeleteNote = new RelayCommand(DeleteNoteBtn);
+            GoToHomepage = new RelayCommand(GoHome);
+            EditBtn = new RelayCommand(Edit);
             Customer = Shared.SelectedCustomer;
+            ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
+            RefreshBtn = new RelayCommand(Refresh);
+            //SelectedSupplier = "Cisco";
             //Customer.Notes.Add("Hej");
             //Customer.Notes.Add("test");
+        }
+
+        public RelayCommand EditBtn { get; set; }
+
+        private void Edit()
+        {
+            Navigation.GoToPage("EditCustomer");
+        }
+
+        public RelayCommand ConnectLicenseBtn { get; set; }
+
+        private void GoToAddLicense()
+        {
+            Navigation.GoToPage("ConnectNewLicens");
+        }
+
+        public RelayCommand RefreshBtn { get; set; }
+
+        private void Refresh()
+        {
+            FilteredLicenses.Clear();
+            OnPropertyChanged(nameof(FilteredLicenses));
+        }
+
+        public RelayCommand GoToHomepage { get; set; }
+
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set
+            {
+                if (Equals(value, _selectedProduct)) return;
+                _selectedProduct = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SelectedSupplier
+        {
+            get => _selectedSupplier;
+            set
+            {
+                if (value == _selectedSupplier) return;
+                _selectedSupplier = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void GoHome()
+        {
+            Navigation.GoToPage("LoginSucceed");
         }
 
 
@@ -41,22 +101,28 @@ namespace ABBLicensApp.Viewmodel
             Customer.Notes.Remove(SelectedNote);
         }
 
-        //public ObservableCollection<Licens> FilteredLicenses
-        //{
-        //    get
-        //    {
-        //        foreach (var p in Shared.Products)
-        //        {
-                    
-        //        }
-        //    }
-        //    set
-        //    {
-        //        if (Equals(value, _filteredLicenses)) return;
-        //        _filteredLicenses = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
+        public ObservableCollection<Product> FilteredLicenses
+        {
+            get
+            {
+
+                foreach (Product p in Shared.Products)
+                {
+                    if (p.Customer.CompanyName == Customer.CompanyName && p.Supplier.Name == SelectedSupplier)
+                    {
+                        _filteredLicenses.Add(p);
+                    }
+                }
+
+                return _filteredLicenses;
+            }
+            set
+            {
+                if (Equals(value, _filteredLicenses)) return;
+                _filteredLicenses = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<string> ActiveLicenses
         {
@@ -115,11 +181,12 @@ namespace ABBLicensApp.Viewmodel
 
         public Customer Customer
         {
-            get => _customer;
+            get => Shared.SelectedCustomer;
             set
             {
-                if (Equals(value, _customer)) return;
-                _customer = value;
+                if (Equals(value, Shared.SelectedCustomer)) return;
+                Shared.SelectedCustomer = value;
+                OnPropertyChanged();
 
             }
         }

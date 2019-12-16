@@ -40,7 +40,7 @@
        <StackPanel Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" Orientation="Horizontal">
             <Button Style="{StaticResource WhiteMenuButton}" Content="Customer" Command="{Binding CustomerBtn}"/>
             <Button Style="{StaticResource GreenMenuButton}" Content="Licens" Command="{Binding LicensesBtn}"/>
-            <Button Style="{StaticResource GreenMenuButton}" Content="Other product"/>
+            <Button Style="{StaticResource GreenMenuButton}" Content="Other&#xa;products"/>
             <Button Style="{StaticResource BlueMenuButton}" Content="Add Licens" Command="{Binding ConnectLicenseBtn}"/>
 
 </StackPanel>

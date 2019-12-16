@@ -1,4 +1,5 @@
 ﻿using System;
+using Windows.UI.Xaml.Controls;
 
 namespace ABBLicensApp.Model
 {
@@ -41,6 +42,14 @@ namespace ABBLicensApp.Model
         {
             get => _supplier;
             set => _supplier = value;
+        }
+
+        public override string GetLicensKey
+        {
+            get
+            {
+                return _licenseKey;
+            }
         }
     }
 

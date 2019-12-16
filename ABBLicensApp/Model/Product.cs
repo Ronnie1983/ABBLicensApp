@@ -29,5 +29,13 @@ namespace ABBLicensApp.Model
             get => _supplier;
             set => _supplier = value;
         }
+
+        public virtual string GetLicensKey
+        {
+            get
+            {
+                return "";
+            } 
+        }
     }
 }
