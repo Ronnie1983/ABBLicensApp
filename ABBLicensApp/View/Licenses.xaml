@@ -52,7 +52,7 @@
         
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBlock Text="Licenses" Margin="10" FontSize="50" HorizontalAlignment="Center"/>
-            <TextBox MinWidth="400"/>
+            <TextBox MinWidth="400" Text="{Binding SearchLicensText , Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <Border Grid.Column="0" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="1" Padding="5" Margin="10,10,10,10" Grid.ColumnSpan="3">

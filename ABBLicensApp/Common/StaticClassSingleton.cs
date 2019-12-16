@@ -24,6 +24,7 @@ namespace ABBLicensApp.Common
  //       private ObservableCollection<Licens> _licenses;
         private ObservableCollection<Product> _products;
         private string _searchCustomerText;
+        private string _searchLicensText;
         private ObservableCollection<LicensSupplier> _licensSupplier;
         private LicensSupplier _selectedLicensSupplier;
         private License _selectedLicens;
@@ -78,6 +79,17 @@ namespace ABBLicensApp.Common
             {
                 if (value == _searchCustomerText) return;
                 _searchCustomerText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SearchLicensText
+        {
+            get => _searchLicensText;
+            set
+            {
+                if (value == _searchLicensText) return;
+                _searchLicensText = value;
                 OnPropertyChanged();
             }
         }
