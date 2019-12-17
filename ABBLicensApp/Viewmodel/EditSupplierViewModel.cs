@@ -50,7 +50,7 @@ namespace ABBLicensApp.Viewmodel
                 }
             }
 
-            Navigation.GoToPage("Licenses");
+            Navigation.GoBack();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

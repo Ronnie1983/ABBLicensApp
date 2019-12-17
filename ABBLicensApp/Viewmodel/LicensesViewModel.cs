@@ -14,13 +14,7 @@ namespace ABBLicensApp.Viewmodel
             GoBack = new RelayCommand(GoBackToMain);
             Shared = StaticClassSingleton.Instance;
             NewSupplierBtn = new RelayCommand(NewSupplierNav);
-            EditSupplierBtn = new RelayCommand(EditSupplierB);
-            GoToSelectedBtn = new RelayCommand(GoToLicens);
         }
-
-        public RelayCommand GoToSelectedBtn { get; set; }
-
-        public RelayCommand EditSupplierBtn { get; set; }
 
         public RelayCommand NewSupplierBtn { get; set; }
 
@@ -57,12 +51,15 @@ namespace ABBLicensApp.Viewmodel
         public LicensSupplier SelectedSupplier
         {
             get => Shared.SelectedLicensSupplier;
-            set => Shared.SelectedLicensSupplier = value;
-        }
-
-        private void GoToLicens()
-        {
-            Navigation.GoToPage("Licens");
+            set
+            {
+                Shared.SelectedLicensSupplier = value;
+                if (SelectedSupplier != null)
+                {
+                    Navigation.GoToPage("Licens");
+                }
+                
+            } 
         }
 
         private void GoBackToMain()
@@ -70,13 +67,7 @@ namespace ABBLicensApp.Viewmodel
             Navigation.GoToPage("LoginSucceed");
         }
 
-        private void EditSupplierB()
-        {
-            if (Shared.SelectedLicensSupplier != null)
-            {
-                Navigation.GoToPage("EditSupplier");
-            }
-        }
+     
 
         private void NewSupplierNav()
         {

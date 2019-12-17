@@ -11,7 +11,6 @@ namespace ABBLicensApp.Viewmodel
     {
         public CustomersViewModel()
         {
-            GoToSelected = new RelayCommand(GoToCustomerDetails);
             GoBack = new RelayCommand(GoBackOnePage);
             NewCustomerBtn = new RelayCommand(NewCustomer);
             Shared = StaticClassSingleton.Instance;
@@ -23,12 +22,17 @@ namespace ABBLicensApp.Viewmodel
 
         public StaticClassSingleton Shared { get; }
 
-        public RelayCommand GoToSelected { get; set; }
-
         public Customer SelectedCustomer
         {
             get => Shared.SelectedCustomer;
-            set => Shared.SelectedCustomer = value;
+            set
+            {
+                Shared.SelectedCustomer = value;
+                if (SelectedCustomer != null)
+                {
+                    Navigation.GoToPage("Customer");
+                }
+            } 
         }
 
         public string SearchCustomerText
@@ -61,14 +65,6 @@ namespace ABBLicensApp.Viewmodel
         private void NewCustomer()
         {
             Navigation.GoToPage("AddCustomer");
-        }
-
-        private void GoToCustomerDetails()
-        {
-            if (SelectedCustomer != null)
-            {
-                Navigation.GoToPage("Customer");
-            }
         }
 
         public void GoBackOnePage()

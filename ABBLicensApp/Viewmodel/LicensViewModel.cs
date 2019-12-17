@@ -16,8 +16,11 @@ namespace ABBLicensApp.Viewmodel
             GoBack = new RelayCommand(GoBackOne);
             DeleteBtn = new RelayCommand(DeleteMethod);
             ChanceBtn = new RelayCommand(Chance);
+            EditSupplierBtn = new RelayCommand(EditSupplierB);
             Shared = StaticClassSingleton.Instance;
         }
+
+        public RelayCommand EditSupplierBtn { get; set; }
 
         public RelayCommand ChanceBtn { get; set; }
 
@@ -70,6 +73,14 @@ namespace ABBLicensApp.Viewmodel
         private void GoBackOne()
         {
             Navigation.GoBack();
+        }
+
+        private void EditSupplierB()
+        {
+            if (Shared.SelectedLicensSupplier != null)
+            {
+                Navigation.GoToPage("EditSupplier");
+            }
         }
 
         private void Chance()
