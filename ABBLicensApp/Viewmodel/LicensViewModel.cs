@@ -85,7 +85,11 @@ namespace ABBLicensApp.Viewmodel
 
         private void Chance()
         {
-            Navigation.GoToPage("EditLicens");
+            if (SelectedLicens != null)
+            {
+                Navigation.GoToPage("EditLicens");
+            }
+           
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
