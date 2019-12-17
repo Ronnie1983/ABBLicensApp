@@ -60,24 +60,24 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Key: "/>
-                                <TextBlock Text="{Binding LicenseKey}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Key: "/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding LicenseKey}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Customer: "/>
-                                <TextBlock Text="{Binding Customer}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Customer: "/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding Customer}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Startdate: "/>
-                                <TextBlock Text="{Binding StartDate}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Startdate: "/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding StartDate}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Expires: "/>
-                                <TextBlock Text="{Binding ExpireDate}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Expires: "/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding ExpireDate}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Units: "/>
-                                <TextBlock Text="{Binding Units}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Units: "/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding Units}"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
