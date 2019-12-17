@@ -27,7 +27,7 @@ namespace ABBLicensApp.Common
         private string _searchLicensText;
         private ObservableCollection<LicensSupplier> _licensSupplier;
         private LicensSupplier _selectedLicensSupplier;
-        private License _selectedLicens;
+        private Licens _selectedLicens;
         private Product _selectedProduct;
 
         private StaticClassSingleton() // part of singleton. Set to private.
@@ -150,7 +150,7 @@ namespace ABBLicensApp.Common
             }
         }
 
-        public License SelectedLicens
+        public Licens SelectedLicens
         {
             get => _selectedLicens;
             set

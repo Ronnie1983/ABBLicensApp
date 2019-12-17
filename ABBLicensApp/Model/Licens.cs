@@ -42,15 +42,13 @@ namespace ABBLicensApp.Model
             set => _supplier = value;
         }
 
-        //public override string GetLicensKey
-        //{
-        //    get
-        //    {
-        //        return _licenseKey;
-        //    }
-
-        //    set { _licenseKey = value; }
-        //}
+        public override string GetLicensKey
+        {
+            get
+            {
+                return _licenseKey;
+            }
+        }
 
         public override DateTime GetExpireDate
         {

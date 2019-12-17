@@ -33,10 +33,10 @@ namespace ABBLicensApp.Viewmodel
             set => Shared.SelectedLicensSupplier = value;
         }
 
-        public Product SelectedLicens
+        public Licens SelectedLicens
         {
-            get => Shared.SelectedProduct;
-            set => Shared.SelectedProduct = value;
+            get => Shared.SelectedLicens;
+            set => Shared.SelectedLicens = value;
         }
 
         public ObservableCollection<Product> NewList
