@@ -88,12 +88,14 @@ namespace ABBLicensApp.Viewmodel
 
         private void CreateLicens()
         {
-            // ToDo Add customer to supplier
-            // ToDo Add License to Customer
-            _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
+            if (NewKey != "")
+            {
+                _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
 
             Shared.Products.Add(_currentLicense);
             Navigation.GoBack();
+            }
+            
         }
 
         private void GoBackHistory()

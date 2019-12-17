@@ -45,12 +45,12 @@
             <Button Style="{StaticResource BlueButtonCustom}" Content="Edit Supplier" Command="{Binding EditSupplierBtn}" MinWidth="120" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <Button Style="{StaticResource BlueButtonCustom}" Content="Chance Licens" MinWidth="120" Background="Green" Command="{Binding ChanceBtn}"/>
-                <Button Style="{StaticResource BlueButtonCustom}" Content="Delete" MinWidth="120" Command="{Binding DeleteBtn}"/>
+                <Button Style="{StaticResource BlueButtonCustom}" Content="Delete Licens" MinWidth="120" Command="{Binding DeleteBtn}" Background="Red"/>
             </StackPanel>
         </StackPanel>
         
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="{Binding Shared.SelectedLicensSupplier.Name}" Margin="10" FontSize="50" HorizontalAlignment="Center"/>
+            <TextBlock Text="{Binding Shared.SelectedLicensSupplier.Name}" Margin="10" FontSize="40" HorizontalAlignment="Center" MaxWidth="700"/>
             <TextBox MinWidth="400"/>
         </StackPanel>
 
