@@ -30,12 +30,23 @@ namespace ABBLicensApp.Model
             set => _supplier = value;
         }
 
-        public virtual string GetLicensKey
+        //public virtual string GetLicensKey
+        //{
+        //    get
+        //    {
+        //        return "";
+        //    }
+           
+        //}
+
+        public virtual DateTime GetExpireDate
         {
-            get
-            {
-                return "";
-            } 
+            get { return Convert.ToDateTime(""); }
+        }
+
+        public virtual int GetUnits
+        {
+            get => 1;
         }
     }
 }

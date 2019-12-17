@@ -25,5 +25,21 @@ namespace ABBLicensApp.Common
 
             return fileredValues;
         }
+
+        public static ObservableCollection<LicensSupplier> FilterValues1(ObservableCollection<LicensSupplier> licenses,
+            IFilterCondition ifc)
+        {
+            ObservableCollection<LicensSupplier> fileredValues1 = new ObservableCollection<LicensSupplier>();
+
+            foreach (LicensSupplier licens in licenses)
+            {
+                if (ifc.Condition1(licens))
+                {
+                    fileredValues1.Add(licens);
+                }
+            }
+
+            return fileredValues1;
+        }
     }
 }

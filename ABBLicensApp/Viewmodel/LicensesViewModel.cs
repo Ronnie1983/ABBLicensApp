@@ -40,13 +40,18 @@ namespace ABBLicensApp.Viewmodel
             {
                 Shared.SearchLicensText = value;
                 OnPropertyChanged();
-               // OnPropertyChanged(nameof(FilteredCustomers));
+                OnPropertyChanged(nameof(FilteredLicensSupplier));
             }
         }
 
         public ObservableCollection<LicensSupplier> LicensSupplier
         {
             get => Shared.LicensSupplier;
+        }
+
+        public ObservableCollection<LicensSupplier> FilteredLicensSupplier
+        {
+            get => Shared.FilteredLicenses;
         }
 
         public LicensSupplier SelectedSupplier
@@ -62,7 +67,7 @@ namespace ABBLicensApp.Viewmodel
 
         private void GoBackToMain()
         {
-            Navigation.GoBack();
+            Navigation.GoToPage("LoginSucceed");
         }
 
         private void EditSupplierB()

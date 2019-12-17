@@ -35,5 +35,23 @@ namespace ABBLicensApp.Common
 
             return true;
         }
+
+        public bool Condition1(LicensSupplier licens)
+        {
+            if (Shared.SearchLicensText == null)
+            {
+                return true;
+            }
+            else
+            {
+                if (!licens.Name.ToLower().Contains(Shared.SearchLicensText.ToLower()))
+                {
+                    return false;
+                }
+            }
+
+
+            return true;
+        }
     }
 }

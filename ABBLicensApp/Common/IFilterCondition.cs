@@ -10,5 +10,6 @@ namespace ABBLicensApp.Common
     public interface IFilterCondition
     {
         bool Condition(Customer customer);
+        bool Condition1(LicensSupplier licens);
     }
 }

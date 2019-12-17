@@ -21,13 +21,14 @@ namespace ABBLicensApp.Common
         private ObservableCollection<Customer> _customers;
 
         private ObservableCollection<Customer> _filteredCustomers;
- //       private ObservableCollection<Licens> _licenses;
+        private ObservableCollection<LicensSupplier> _filteredLicenses;
         private ObservableCollection<Product> _products;
         private string _searchCustomerText;
         private string _searchLicensText;
         private ObservableCollection<LicensSupplier> _licensSupplier;
         private LicensSupplier _selectedLicensSupplier;
         private License _selectedLicens;
+        private Product _selectedProduct;
 
         private StaticClassSingleton() // part of singleton. Set to private.
         {
@@ -72,6 +73,17 @@ namespace ABBLicensApp.Common
             }
         }
 
+        public Product SelectedProduct
+        {
+            get => _selectedProduct;
+            set
+            {
+                if (Equals(value, _selectedProduct)) return;
+                _selectedProduct = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string SearchCustomerText
         {
             get => _searchCustomerText;
@@ -101,6 +113,17 @@ namespace ABBLicensApp.Common
             {
                 if (Equals(value, _filteredCustomers)) return;
                 _filteredCustomers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<LicensSupplier> FilteredLicenses
+        {
+            get { return Filter.FilterValues1(LicensSupplier, new CustomerNameFilter()); }
+            set
+            {
+                if (Equals(value, _filteredLicenses)) return;
+                _filteredLicenses = value;
                 OnPropertyChanged();
             }
         }

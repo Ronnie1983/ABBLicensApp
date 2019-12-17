@@ -9,15 +9,17 @@ namespace ABBLicensApp.Viewmodel
 {
     public class LicensViewModel : INotifyPropertyChanged
     {
-        private Product _selectedLicense;
         ObservableCollection<Product> _newList = new ObservableCollection<Product>();
 
         public LicensViewModel()
         {
             GoBack = new RelayCommand(GoBackOne);
             DeleteBtn = new RelayCommand(DeleteMethod);
+            ChanceBtn = new RelayCommand(Chance);
             Shared = StaticClassSingleton.Instance;
         }
+
+        public RelayCommand ChanceBtn { get; set; }
 
         public RelayCommand GoBack { get; set; }
 
@@ -33,8 +35,8 @@ namespace ABBLicensApp.Viewmodel
 
         public Product SelectedLicens
         {
-            get => _selectedLicense;
-            set => _selectedLicense = value;
+            get => Shared.SelectedProduct;
+            set => Shared.SelectedProduct = value;
         }
 
         public ObservableCollection<Product> NewList
@@ -68,6 +70,11 @@ namespace ABBLicensApp.Viewmodel
         private void GoBackOne()
         {
             Navigation.GoBack();
+        }
+
+        private void Chance()
+        {
+            Navigation.GoToPage("EditLicens");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
