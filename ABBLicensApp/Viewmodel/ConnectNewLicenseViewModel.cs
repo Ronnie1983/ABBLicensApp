@@ -14,7 +14,7 @@ namespace ABBLicensApp.Viewmodel
         private string _newKey;
         private int _newUnits;
         private DateTime _expireDate;
-        private DateTime _startDate;
+        private DateTime _startDate = DateTime.UtcNow;
         private Licens _currentLicense;
 
         public ConnectNewLicenseViewModel()

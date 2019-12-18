@@ -13,7 +13,6 @@ namespace ABBLicensApp.Model
         private string _email;
         private int _id;
         private ObservableCollection<string> _notes;
-        private List<Product> _products;
         private string _phoneNumber;
         private string _contactName;
 
@@ -25,7 +24,6 @@ namespace ABBLicensApp.Model
             _notes = new ObservableCollection<string>();
             _phoneNumber = phoneNumber;
             _contactName = contactName;
-            _products = new List<Product>();
         }
 
         public Customer()
@@ -36,7 +34,6 @@ namespace ABBLicensApp.Model
             _notes = new ObservableCollection<string>();
             _phoneNumber = "12345678";
             _contactName = "Allan";
-            _products = new List<Product>();
         }
 
         public string CompanyName
@@ -72,12 +69,6 @@ namespace ABBLicensApp.Model
                 _notes = value;
                 OnPropertyChanged();
             }
-        }
-
-        public List<Product> Products
-        {
-            get => _products;
-            set => _products = value;
         }
 
         public string PhoneNumber
