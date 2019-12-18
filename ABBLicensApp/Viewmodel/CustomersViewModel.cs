@@ -14,6 +14,7 @@ namespace ABBLicensApp.Viewmodel
             GoBack = new RelayCommand(GoBackOnePage);
             NewCustomerBtn = new RelayCommand(NewCustomer);
             Shared = StaticClassSingleton.Instance;
+            SelectedCustomer = null;
         }
 
         public RelayCommand NewCustomerBtn { get; set; }

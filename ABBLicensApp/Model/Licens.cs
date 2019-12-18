@@ -36,12 +36,6 @@ namespace ABBLicensApp.Model
             set => _licenseKey = value;
         }
 
-        public Supplier Supplier
-        {
-            get => _supplier;
-            set => _supplier = value;
-        }
-
         public override string GetLicensKey
         {
             get
