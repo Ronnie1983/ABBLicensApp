@@ -122,7 +122,7 @@ namespace ABBLicensApp.Viewmodel
                     //c.StartDate = StartDate;
                 }
             }
-            Navigation.GoToPage("Licens");
+            Navigation.GoBack();
         }
 
         private void GoBack()

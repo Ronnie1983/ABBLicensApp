@@ -14,7 +14,7 @@ namespace ABBLicensApp.Viewmodel
     {
         private ObservableCollection<string> _activeLicenses = new ObservableCollection<string>();
         private ObservableCollection<Product> _filteredLicenses = new ObservableCollection<Product>();
-        private Product _selectedProduct;
+        //private Product _selectedProduct;
         private string _selectedSupplier;
         private string _newNote;
         private string _selectedNote;
@@ -31,14 +31,11 @@ namespace ABBLicensApp.Viewmodel
             Customer = Shared.SelectedCustomer;
             ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
             GoToEditLicense = new RelayCommand(EditLicens);
+            SelectedLicens = null;
+            SelectedProduct = null;
         }
 
         public RelayCommand GoToEditLicense { get; set; }
-
-        private void EditLicens()
-        {
-            throw new System.NotImplementedException();
-        }
 
         public RelayCommand EditBtn { get; set; }
 
@@ -48,11 +45,11 @@ namespace ABBLicensApp.Viewmodel
 
         public Product SelectedProduct
         {
-            get => _selectedProduct;
+            get => Shared.SelectedProduct;
             set
             {
-                if (Equals(value, _selectedProduct)) return;
-                _selectedProduct = value;
+                if (Equals(value,Shared.SelectedProduct)) return;
+                Shared.SelectedProduct = value;
                 OnPropertyChanged();
             }
         }
@@ -197,14 +194,13 @@ namespace ABBLicensApp.Viewmodel
             Navigation.GoToPage("ConnectNewLicens");
         }
 
-        private void Chance()
+        private void EditLicens()
         {
             if (SelectedProduct != null)
             {
                 SelectedLicens = (Licens) SelectedProduct;
                 Navigation.GoToPage("EditLicens");
             }
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

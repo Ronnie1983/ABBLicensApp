@@ -42,10 +42,9 @@
         </Button>
 
         <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="1" Margin="0,0,50,0" VerticalAlignment="Center" HorizontalAlignment="Right">
-            <Button Style="{StaticResource BlueButtonCustom}" Content="Edit" MinWidth="120" Command="{Binding EditBtn}" VerticalAlignment="Bottom"/>
+            <Button Style="{StaticResource BlueButtonCustom}" Content="Edit Customer" MinWidth="120" Command="{Binding EditBtn}" VerticalAlignment="Bottom"/>
 
             <StackPanel Orientation="Vertical">
-                <Button Style="{StaticResource BlueButtonCustom}" Content="Add Licens" Command="{Binding ConnectLicenseBtn}" MinWidth="120"/>
             </StackPanel>
         </StackPanel>
 
@@ -71,7 +70,7 @@
                 </Border>
                 <TextBox Margin="0,20,0,0" Text="{Binding NewNote , Mode=TwoWay}"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource BlueButtonCustom}" Content="Add" Command="{Binding AddBtn}"/>
+                    <Button Style="{StaticResource BlueButtonCustom}" Content="Add Comment" Command="{Binding AddBtn}" MinWidth="120"/>
                     <Button Style="{StaticResource BlueButtonCustom}" Background="Red" Content="Delete" Command="{Binding DeleteNote}"/>
                 </StackPanel>
             </StackPanel>
@@ -81,7 +80,7 @@
         <Border Background="White" BorderThickness="1" BorderBrush="Gray" Margin="10" MinHeight="400" VerticalAlignment="Top">
             <StackPanel >
                 <TextBlock Text="{Binding SelectedSupplier}" FontSize="20" HorizontalAlignment="Center"/>
-                <ListView ItemsSource="{Binding FilteredLicenses}" SelectedIndex="{Binding SelectedProduct , Mode=TwoWay}" MaxHeight="550">
+                <ListView ItemsSource="{Binding FilteredLicenses}" SelectedItem="{Binding SelectedProduct , Mode=TwoWay}" MaxHeight="550">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -104,8 +103,8 @@
             </StackPanel>
         </Border>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Style="{StaticResource BlueButtonCustom}" Content="Add Licens" Command="{Binding ConnectLicenseBtn}"/>
             <Button Style="{StaticResource BlueButtonCustom}" Content="Chance" Background="Green" Command="{Binding GoToEditLicense}"/>
-            <Button Style="{StaticResource BlueButtonCustom}" Background="Red" Content="Delete" Command="{Binding DeleteNote}"/>
         </StackPanel>
         </StackPanel>
         <Border Grid.Row="2" Grid.Column="2" BorderThickness="1" BorderBrush="Gray" Margin="10" Background="White" MinHeight="400" MaxHeight="450" VerticalAlignment="Top">

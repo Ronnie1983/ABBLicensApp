@@ -65,7 +65,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Customer: "/>
-                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding Customer}"/>
+                                <TextBlock Style="{StaticResource ListTextblockCustom}" Text="{Binding Customer.CompanyName}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Style="{StaticResource ListTextblockCustom}" Text="Startdate: "/>
