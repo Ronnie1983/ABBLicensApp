@@ -5,7 +5,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="using:ABBLicensApp.Viewmodel"
-    xmlns:Custom="using:Microsoft.Xaml.Interactivity" xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
     x:Class="ABBLicensApp.View.Customers"
     mc:Ignorable="d"
     >
@@ -44,13 +43,10 @@
         <Border Grid.Column="0" Grid.Row="2" Background="White" BorderBrush="Black" BorderThickness="1" Padding="5" Margin="10,10,10,10" Grid.ColumnSpan="3">
             <GridView ItemsSource="{Binding FilteredCustomers}" SelectedIndex="0" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
                 <GridView.ItemTemplate>
-
                     <DataTemplate>
-                        <Border BorderThickness="1" BorderBrush="Black" Height="80" Width="400" Background="Gainsboro">
+                        <Border BorderThickness="1" BorderBrush="Black" Height="60" Width="400" Background="Gainsboro">
                             <StackPanel Orientation="Vertical">
                                 <TextBlock Text="{Binding CompanyName}" FontSize="25" Margin="10,5,0,0" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding ContactName}" FontSize="12" Margin="10,0,0,0" />
-                                <TextBlock Text="{Binding PhoneNumber}" FontSize="12" Margin="10,0,0,0"/>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

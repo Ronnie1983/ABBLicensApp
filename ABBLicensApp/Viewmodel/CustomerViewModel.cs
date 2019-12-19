@@ -4,7 +4,9 @@ using ABBLicensApp.Model;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ABBLicensApp.View;
 using Customer = ABBLicensApp.Model.Customer;
+using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
@@ -28,6 +30,14 @@ namespace ABBLicensApp.Viewmodel
             EditBtn = new RelayCommand(Edit);
             Customer = Shared.SelectedCustomer;
             ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
+            GoToEditLicense = new RelayCommand(EditLicens);
+        }
+
+        public RelayCommand GoToEditLicense { get; set; }
+
+        private void EditLicens()
+        {
+            throw new System.NotImplementedException();
         }
 
         public RelayCommand EditBtn { get; set; }
@@ -131,6 +141,12 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
+        public Licens SelectedLicens
+        {
+            get => Shared.SelectedLicens;
+            set => Shared.SelectedLicens = value;
+        }
+
         public RelayCommand GoBack { get; set; }
 
         public StaticClassSingleton Shared { get; }
@@ -179,6 +195,16 @@ namespace ABBLicensApp.Viewmodel
         private void GoToAddLicense()
         {
             Navigation.GoToPage("ConnectNewLicens");
+        }
+
+        private void Chance()
+        {
+            if (SelectedProduct != null)
+            {
+                SelectedLicens = (Licens) SelectedProduct;
+                Navigation.GoToPage("EditLicens");
+            }
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

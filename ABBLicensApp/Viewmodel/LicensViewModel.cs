@@ -18,6 +18,7 @@ namespace ABBLicensApp.Viewmodel
             ChanceBtn = new RelayCommand(Chance);
             EditSupplierBtn = new RelayCommand(EditSupplierB);
             Shared = StaticClassSingleton.Instance;
+            SelectedLicens = null;
         }
 
         public RelayCommand EditSupplierBtn { get; set; }
