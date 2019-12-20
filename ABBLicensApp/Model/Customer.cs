@@ -26,14 +26,18 @@ namespace ABBLicensApp.Model
             _contactName = contactName;
         }
 
+        public Customer(Customer c)
+        {
+            _companyName = c.CompanyName;
+            _address = c.Address;
+            _email = c.Email;
+            _notes = c.Notes;
+            _phoneNumber = c.PhoneNumber;
+            _contactName = c.ContactName;
+        }
+
         public Customer()
         {
-            _companyName = "ABB";
-            _address = "Meterbuen 33";
-            _email = "fem@to.dk";
-            _notes = new ObservableCollection<string>();
-            _phoneNumber = "12345678";
-            _contactName = "Allan";
         }
 
         public string CompanyName

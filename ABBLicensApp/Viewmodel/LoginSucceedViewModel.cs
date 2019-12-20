@@ -8,7 +8,7 @@ namespace ABBLicensApp.Viewmodel
         {
             CustomerBtn = new GoToPageCommand("Customers");
             LicensesBtn = new GoToPageCommand("Licenses");
-            ConnectLicenseBtn = new GoToPageCommand("´ConnectNewLicense");
+            ConnectLicenseBtn = new GoToPageCommand("ConnectNewLicens");
         }
 
         //Metoder

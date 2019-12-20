@@ -9,92 +9,106 @@ namespace ABBLicensApp.Viewmodel
 {
     class EditCustomerViewModel : INotifyPropertyChanged
     {
+        private Customer _proxyCustomer;
+        private string _originalName;
+
         public EditCustomerViewModel()
         {
             CancelThis = new GoBackCommand();
-            RegisterCustomerBtn = new RelayCommand(AddCustomer);
+            RegisterCustomerBtn = new RelayCommand(UpdateCustomer);
             Shared = StaticClassSingleton.Instance;
+            ProxyCustomer = new Customer(Shared.SelectedCustomer);
+
+            _originalName = ProxyCustomer.CompanyName;
         }
 
         //Metoder
 
-        private void AddCustomer()
+        private void UpdateCustomer()
         {
-            foreach (var c in Shared.Customers)
+            Customer cust = Shared.Customers.Single((c) => c.CompanyName == _originalName);
+
+            if (cust != null)
             {
-                if (c.CompanyName == Shared.SelectedCustomer.CompanyName)
-                {
-                    c.CompanyName = Name;
-                    c.Address = Addr;
-                    c.ContactName = Contact;
-                    c.Email = Email;
-                    c.PhoneNumber = Phone;
-                }
+
+                cust.CompanyName = Name;
+                cust.Address = Addr;
+                cust.ContactName = Contact;
+                cust.Email = Email;
+                cust.PhoneNumber = Phone;
+
+                Navigation.GoBack();
             }
-            Navigation.GoBack();
         }
 
         //Properties
 
+        public Customer ProxyCustomer
+        {
+            get => _proxyCustomer;
+            set => _proxyCustomer = value;
+        }
+
         public string Name
         {
-            get => Shared.SelectedCustomer.CompanyName;
+            get => ProxyCustomer.CompanyName;
             set
             {
-                if (value == Shared.SelectedCustomer.CompanyName) return;
-                Shared.SelectedCustomer.CompanyName = value;
+                if (value == ProxyCustomer.CompanyName) return;
+                ProxyCustomer.CompanyName = value;
                 OnPropertyChanged();
             }
         }
 
         public string Phone
         {
-            get => Shared.SelectedCustomer.PhoneNumber;
+            get => ProxyCustomer.PhoneNumber;
             set
             {
-                if (value == Shared.SelectedCustomer.PhoneNumber) return;
-                Shared.SelectedCustomer.PhoneNumber = value;
+                if (value == ProxyCustomer.PhoneNumber) return;
+                ProxyCustomer.PhoneNumber = value;
                 OnPropertyChanged();
             }
         }
 
         public string Email
         {
-            get => Shared.SelectedCustomer.Email;
+            get => ProxyCustomer.Email;
             set
             {
-                if (value == Shared.SelectedCustomer.Email) return;
-                Shared.SelectedCustomer.Email = value;
+                if (value == ProxyCustomer.Email) return;
+                ProxyCustomer.Email = value;
                 OnPropertyChanged();
             }
         }
 
         public string Contact
         {
-            get => Shared.SelectedCustomer.ContactName;
+            get => ProxyCustomer.ContactName;
             set
             {
-                if (value == Shared.SelectedCustomer.ContactName) return;
-                Shared.SelectedCustomer.ContactName = value;
+                if (value == ProxyCustomer.ContactName) return;
+                ProxyCustomer.ContactName = value;
                 OnPropertyChanged();
             }
         }
 
         public string Addr
         {
-            get => Shared.SelectedCustomer.Address;
+            get => ProxyCustomer.Address;
             set
             {
-                if (value == Shared.SelectedCustomer.Address) return;
-                Shared.SelectedCustomer.Address = value;
+                if (value == ProxyCustomer.Address) return;
+                ProxyCustomer.Address = value;
                 OnPropertyChanged();
             }
         }
+
         public StaticClassSingleton Shared { get; }
         public RelayCommand RegisterCustomerBtn { get; set; }
         public RelayCommand CancelThis { get; set; }
-        
-        
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
