@@ -16,10 +16,20 @@ namespace ABBLicensApp.Viewmodel
 
         public AddCustomerViewModel()
         {
-            CancelThis = new RelayCommand(GoBackCancel);
+            CancelThis = new GoBackCommand();
             RegisterCustomerBtn = new RelayCommand(AddCustomer);
             Shared = StaticClassSingleton.Instance;
         }
+
+        //Metoder
+
+        private void AddCustomer()
+        {
+            Shared.Customers.Add(new Customer(Name, Addr, Email, Phone, Contact));
+            Navigation.GoBack();
+        }
+
+        //Properties
 
         public string Addr
         {
@@ -32,12 +42,7 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public StaticClassSingleton Shared { get;}
-
-        public RelayCommand RegisterCustomerBtn { get; set; }
-
-        public RelayCommand CancelThis { get; set; }
-
+        
         public string Name
         {
             get => _name;
@@ -82,16 +87,11 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void GoBackCancel()
-        {
-            Navigation.GoBack();
-        }
+        public StaticClassSingleton Shared { get; }
 
-        private void AddCustomer()
-        {
-            Shared.Customers.Add(new Customer(Name, Addr, Email, Phone, Contact));
-            Navigation.GoBack();
-        }
+        public RelayCommand RegisterCustomerBtn { get; set; }
+
+        public RelayCommand CancelThis { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

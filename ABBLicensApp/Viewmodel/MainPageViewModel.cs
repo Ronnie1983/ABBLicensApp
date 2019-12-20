@@ -10,18 +10,27 @@ namespace ABBLicensApp.Viewmodel
 
         public MainPageViewModel() // Constructor of the viewmodel
         {
-            LoginCommand = new RelayCommand(LoginMethod); // create the object of a login method
-            GoToRegisterPage = new RelayCommand(GoToRegisterPageMethod); // Create the object of a register method
-            Shared = StaticClassSingleton.Instance; // calls the property that returns a instance field whom create the static common class
+            LoginCommand = new RelayCommand(LoginMethod);
+            GoToRegisterPage = new GoToPageCommand("Registration");
+            Shared = StaticClassSingleton.Instance;
         }
 
-        public StaticClassSingleton Shared { get; }
+        //Metoder
+        private void LoginMethod()
+        {
+            foreach (var aUser in Shared.UsersCollection)
+            {
+                if (NewName == aUser.Username && NewPassword == aUser.Password)
+                {
+                    Shared.CurrentUser = NewName;
+                    Navigation.GoToPage("LoginSucceed");
+                }
+            }
+        }
 
-        public RelayCommand LoginCommand { get; set; } // makes the login button possible to access login method
+        //Properties
 
-        public RelayCommand GoToRegisterPage { get; set; } // makes the register button possible to access register method
-
-        public string NewName // properties for the inserted name at login
+        public string NewName
         {
             get => _newName;
             set
@@ -31,7 +40,7 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public string NewPassword // properties for the inserted password at login
+        public string NewPassword
         {
             get => _newPassword;
             set
@@ -40,22 +49,10 @@ namespace ABBLicensApp.Viewmodel
                 _newPassword = value;
             }
         }
+        public StaticClassSingleton Shared { get; }
+        public RelayCommand LoginCommand { get; set; }
+        public RelayCommand GoToRegisterPage { get; set; }
 
-        public void GoToRegisterPageMethod() // the register method
-        {
-            Navigation.GoToPage("RegisterPage"); // calls the method navigate to registerpage
-        }
-
-        private void LoginMethod() // The login method
-        {
-            foreach (var aUser in Shared.UsersCollection) // controls if user exists
-            {
-                if (NewName == aUser.Username && NewPassword == aUser.Password)
-                {
-                    Shared.CurrentUser = NewName;
-                    Navigation.GoToPage("LoginSucceed");
-                }
-            }
-        }
+        
     }
 }

@@ -124,6 +124,8 @@
     <Compile Include="Common\IFilterCondition.cs" />
     <Compile Include="Common\StaticClassSingleton.cs" />
     <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\GoBackCommand.cs" />
+    <Compile Include="Model\GoToPageCommand.cs" />
     <Compile Include="Model\JsonDataBase.cs" />
     <Compile Include="Model\JsonReader.cs" />
     <Compile Include="Model\JsonWriter.cs" />

@@ -13,23 +13,40 @@ namespace ABBLicensApp.Viewmodel
 
         public LicensViewModel()
         {
-            GoBack = new RelayCommand(GoBackOne);
-            DeleteBtn = new RelayCommand(DeleteMethod);
-            ChanceBtn = new RelayCommand(Chance);
-            EditSupplierBtn = new RelayCommand(EditSupplierB);
+            GoBack = new GoBackCommand();
+            DeleteBtn = new RelayCommand(Delete);
+            ChanceBtn = new RelayCommand(Change);
+            EditSupplierBtn = new RelayCommand(EditSupplier);
             Shared = StaticClassSingleton.Instance;
             SelectedLicens = null;
         }
 
-        public RelayCommand EditSupplierBtn { get; set; }
+        //Metoder
 
-        public RelayCommand ChanceBtn { get; set; }
+        private void Delete()
+        {
+            Shared.Products.Remove(SelectedLicens);
+            NewList.Clear();
+            OnPropertyChanged(nameof(NewList));
+        }
 
-        public RelayCommand GoBack { get; set; }
+        private void EditSupplier()
+        {
+            if (Shared.SelectedLicensSupplier != null)
+            {
+                Navigation.GoToPage("EditSupplier");
+            }
+        }
 
-        public RelayCommand DeleteBtn { get; set; }
+        private void Change()
+        {
+            if (SelectedLicens != null)
+            {
+                Navigation.GoToPage("EditLicens");
+            }
+        }
 
-        public StaticClassSingleton Shared { get; }
+        //Properties
 
         public LicensSupplier SelectedLicensSupplier
         {
@@ -64,34 +81,12 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void DeleteMethod()
-        {
-            Shared.Products.Remove(SelectedLicens);
-            NewList.Clear();
-            OnPropertyChanged(nameof(NewList));
-        }
+        public RelayCommand EditSupplierBtn { get; set; }
+        public RelayCommand ChanceBtn { get; set; }
+        public RelayCommand GoBack { get; set; }
+        public RelayCommand DeleteBtn { get; set; }
+        public StaticClassSingleton Shared { get; }
 
-        private void GoBackOne()
-        {
-            Navigation.GoBack();
-        }
-
-        private void EditSupplierB()
-        {
-            if (Shared.SelectedLicensSupplier != null)
-            {
-                Navigation.GoToPage("EditSupplier");
-            }
-        }
-
-        private void Chance()
-        {
-            if (SelectedLicens != null)
-            {
-                Navigation.GoToPage("EditLicens");
-            }
-           
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

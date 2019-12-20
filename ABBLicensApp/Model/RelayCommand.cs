@@ -7,7 +7,7 @@ namespace ABBLicensApp.Model
     {
         private Action _execute;
         private Func<bool> _canExecute = () => true;
-
+        
         public RelayCommand(Action execute)
         {
             _execute = execute;

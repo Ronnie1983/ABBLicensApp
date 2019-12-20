@@ -13,6 +13,10 @@
             Type = "Licens";
         }
 
+        //Metoder
+
+        //Properties
+
         public string Type { get; set; }
     }
 }

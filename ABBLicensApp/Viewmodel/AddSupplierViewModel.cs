@@ -10,31 +10,31 @@ namespace ABBLicensApp.Viewmodel
         public AddSupplierViewModel()
         {
             AddSupplierBtn = new RelayCommand(AddBtn);
-            GoBackBtn = new RelayCommand(CancelBtn);
+            GoBackBtn = new GoBackCommand();
             Shared = StaticClassSingleton.Instance;
         }
+        
+        //Metoder
+        
+        public void AddBtn()
+        {
+            Shared.LicensSupplier.Add(new LicensSupplier(Name));
+            Navigation.GoBack();
+        }
 
-        public RelayCommand AddSupplierBtn { get; set; }
+        //Properties
 
         public string Name
         {
             get => _name;
             set => _name = value;
         }
+        public RelayCommand AddSupplierBtn { get; set; }
 
         public StaticClassSingleton Shared { get; }
 
         public RelayCommand GoBackBtn { get; set; }
 
-        private void CancelBtn()
-        {
-            Navigation.GoBack();
-        }
-
-        public void AddBtn()
-        {
-            Shared.LicensSupplier.Add(new LicensSupplier(Name));
-            Navigation.GoBack();
-        }
+        
     }
 }

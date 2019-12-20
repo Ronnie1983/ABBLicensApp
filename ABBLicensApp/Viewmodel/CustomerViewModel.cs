@@ -23,26 +23,45 @@ namespace ABBLicensApp.Viewmodel
         public CustomerViewModel()
         {
             Shared = StaticClassSingleton.Instance;
-            GoBack = new RelayCommand(BackBtn);
+            GoBack = new GoBackCommand();
             AddBtn = new RelayCommand(AddComment);
-            DeleteNote = new RelayCommand(DeleteNoteBtn);
-            GoToHomepage = new RelayCommand(GoHome);
-            EditBtn = new RelayCommand(Edit);
+            DeleteNoteBtn = new RelayCommand(DeleteNote);
+            GoToHomepage = new GoToPageCommand("LoginSucceed");
+            EditBtn = new GoToPageCommand("EditCustomer");
             Customer = Shared.SelectedCustomer;
-            ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
+            ConnectLicenseBtn = new GoToPageCommand("ConnectNewLicens");
             GoToEditLicense = new RelayCommand(EditLicens);
             SelectedLicens = null;
             SelectedProduct = null;
         }
 
-        public RelayCommand GoToEditLicense { get; set; }
 
-        public RelayCommand EditBtn { get; set; }
+        //Metoder
+        public void AddComment()
+        {
+            if (NewNote.Length > 0)
+            {
+                Customer.Notes.Add(NewNote);
+                NewNote = "";
+            }
+        }
 
-        public RelayCommand ConnectLicenseBtn { get; set; }
+        private void DeleteNote()
+        {
+            Customer.Notes.Remove(SelectedNote);
+        }
 
-        public RelayCommand GoToHomepage { get; set; }
 
+        private void EditLicens()
+        {
+            if (SelectedProduct != null)
+            {
+                SelectedLicens = (Licens)SelectedProduct;
+                Navigation.GoToPage("EditLicens");
+            }
+        }
+
+        //Properties
         public Product SelectedProduct
         {
             get => Shared.SelectedProduct;
@@ -66,8 +85,6 @@ namespace ABBLicensApp.Viewmodel
                 OnPropertyChanged(nameof(FilteredLicenses));
             }
         }
-
-        public RelayCommand DeleteNote { get; set; }
 
         public ObservableCollection<Product> FilteredLicenses
         {
@@ -125,7 +142,6 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public RelayCommand AddBtn { get; set; }
 
         public string NewNote
         {
@@ -144,10 +160,7 @@ namespace ABBLicensApp.Viewmodel
             set => Shared.SelectedLicens = value;
         }
 
-        public RelayCommand GoBack { get; set; }
-
-        public StaticClassSingleton Shared { get; }
-
+        
         public Customer Customer
         {
             get => Shared.SelectedCustomer;
@@ -159,49 +172,15 @@ namespace ABBLicensApp.Viewmodel
 
             }
         }
+        public RelayCommand GoBack { get; set; }
+        public StaticClassSingleton Shared { get; }
+        public RelayCommand AddBtn { get; set; }
+        public RelayCommand DeleteNoteBtn { get; set; }
+        public RelayCommand GoToEditLicense { get; set; }
+        public RelayCommand EditBtn { get; set; }
+        public RelayCommand ConnectLicenseBtn { get; set; }
+        public RelayCommand GoToHomepage { get; set; }
 
-        public void AddComment()
-        {
-            if (NewNote.Length > 0)
-            {
-                Customer.Notes.Add(NewNote);
-                NewNote = "";
-            }
-        }
-
-        private void Edit()
-        {
-            Navigation.GoToPage("EditCustomer");
-        }
-
-        private void BackBtn()
-        {
-            Navigation.GoBack();
-        }
-
-        private void DeleteNoteBtn()
-        {
-            Customer.Notes.Remove(SelectedNote);
-        }
-
-        private void GoHome()
-        {
-            Navigation.GoToPage("LoginSucceed");
-        }
-
-        private void GoToAddLicense()
-        {
-            Navigation.GoToPage("ConnectNewLicens");
-        }
-
-        private void EditLicens()
-        {
-            if (SelectedProduct != null)
-            {
-                SelectedLicens = (Licens) SelectedProduct;
-                Navigation.GoToPage("EditLicens");
-            }
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

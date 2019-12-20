@@ -8,16 +8,15 @@ namespace ABBLicensApp.Viewmodel
         public RegistrationSucceedViewModel()
         {
             Shared = StaticClassSingleton.Instance;
-            GoToMainPageOk = new RelayCommand(MainPageButton);
+            GoToMainPageOk = new GoToPageCommand("MainPage");
         }
+
+        //Metoder
+
+        //Properties
 
         public StaticClassSingleton Shared { get; private set; }
-
         public RelayCommand GoToMainPageOk { get; set; }
 
-        private void MainPageButton()
-        {
-            Navigation.GoToPage("MainPage");
-        }
     }
 }

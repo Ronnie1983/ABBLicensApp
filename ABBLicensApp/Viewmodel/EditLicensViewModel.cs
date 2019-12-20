@@ -22,17 +22,34 @@ namespace ABBLicensApp.Viewmodel
         public EditLicensViewModel()
         {
             Shared = StaticClassSingleton.Instance;
-            GoBackBtn = new RelayCommand(GoBack);
-            ChanceBtn = new RelayCommand(Chance);
+            GoBackBtn = new GoBackCommand();
+            ChanceBtn = new RelayCommand(Change);
             _originalLicens = Shared.SelectedLicens;
         }
 
-        public RelayCommand ChanceBtn { get; set; }
+        //Metoder
+        private void Change()
+        {
+            for (int i = 0; i < Shared.Products.Count; i++)
+            {
+                Product p = Shared.Products[i];
+                Licens l = (Licens)p;
+                if (l.LicenseKey == _originalLicens.LicenseKey)
+                {
+                    Shared.Products[i] = SelectedLicens;
 
-        public RelayCommand GoBackBtn { get; set; }
+                    //l.LicenseKey = LicenseKey;
+                    //l.ExpireDate = ExpireDate;
+                    //l.Units = Units;
+                    //c.StartDate = StartDate;
+                }
+            }
+            Navigation.GoBack();
+        }
 
-        public StaticClassSingleton Shared { get; }
+        //Properties
 
+        
         public Product SelectedProduct
         {
             get { return Shared.SelectedProduct; }
@@ -106,29 +123,10 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void Chance()
-        {
-            for (int i = 0; i < Shared.Products.Count; i++)
-            {
-                Product p = Shared.Products[i];
-                Licens l = (Licens)p ;
-                if (l.LicenseKey == _originalLicens.LicenseKey)
-                {
-                    Shared.Products[i] = SelectedLicens;
+        public RelayCommand ChanceBtn { get; set; }
+        public RelayCommand GoBackBtn { get; set; }
+        public StaticClassSingleton Shared { get; }
 
-                    //l.LicenseKey = LicenseKey;
-                    //l.ExpireDate = ExpireDate;
-                    //l.Units = Units;
-                    //c.StartDate = StartDate;
-                }
-            }
-            Navigation.GoBack();
-        }
-
-        private void GoBack()
-        {
-            Navigation.GoBack();
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

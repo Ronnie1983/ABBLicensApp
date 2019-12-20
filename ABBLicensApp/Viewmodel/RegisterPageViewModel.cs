@@ -19,8 +19,18 @@ namespace ABBLicensApp.Viewmodel
             RegisterButton = new RelayCommand(RegUser);
         }
 
-        public RelayCommand RegisterButton { get; set; }
+        //Metoder
+        public void RegUser()
+        {
+            if (NewPassword == RePassword)
+            {
+                Shared.UsersCollection.Add(new User(NewName, NewPassword));
+                Navigation.GoToPage("RegistrationSucceed");
+            }
+        }
 
+        //Properties
+        
         public string NewName
         {
             get => _newName;
@@ -64,15 +74,7 @@ namespace ABBLicensApp.Viewmodel
                 OnPropertyChanged();
             }
         }
-
-        public void RegUser()
-        {
-            if (NewPassword == RePassword)
-            {
-               Shared.UsersCollection.Add(new User(NewName,NewPassword));
-               Navigation.GoToPage("RegistrationSucceed"); 
-            }
-        }
+        public RelayCommand RegisterButton { get; set; }
 
         public StaticClassSingleton Shared { get; }
 

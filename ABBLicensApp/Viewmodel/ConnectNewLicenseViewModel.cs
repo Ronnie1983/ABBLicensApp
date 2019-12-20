@@ -20,15 +20,25 @@ namespace ABBLicensApp.Viewmodel
         public ConnectNewLicenseViewModel()
         {
             Shared = StaticClassSingleton.Instance;
-            GoBack = new RelayCommand(GoBackHistory);
+            GoBack = new GoBackCommand();
             CreateBtn = new RelayCommand(CreateLicens);
         }
 
-        public RelayCommand CreateBtn { get; set; }
+        //Metoder
 
-        public RelayCommand GoBack { get; set; }
+        private void CreateLicens()
+        {
+            if (NewKey != "")
+            {
+                _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
 
-        public StaticClassSingleton Shared { get; }
+                Shared.Products.Add(_currentLicense);
+                Navigation.GoBack();
+            }
+
+        }
+
+        //Properties
 
         public ObservableCollection<LicensSupplier> LicensSupplier
         {
@@ -85,23 +95,12 @@ namespace ABBLicensApp.Viewmodel
             get => _startDate;
             set => _startDate = value;
         }
+        
+        public RelayCommand CreateBtn { get; set; }
 
-        private void CreateLicens()
-        {
-            if (NewKey != "")
-            {
-                _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
+        public RelayCommand GoBack { get; set; }
 
-            Shared.Products.Add(_currentLicense);
-            Navigation.GoBack();
-            }
-            
-        }
-
-        private void GoBackHistory()
-        {
-            Navigation.GoBack();
-        }
+        public StaticClassSingleton Shared { get; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

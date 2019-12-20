@@ -11,17 +11,15 @@ namespace ABBLicensApp.Viewmodel
     {
         public LicensesViewModel()
         {
-            GoBack = new RelayCommand(GoBackToMain);
+            GoBack = new GoToPageCommand("LoginSucceed");
             Shared = StaticClassSingleton.Instance;
-            NewSupplierBtn = new RelayCommand(NewSupplierNav);
+            NewSupplierBtn = new GoToPageCommand("AddSupplier");
             SelectedSupplier = null;
         }
 
-        public RelayCommand NewSupplierBtn { get; set; }
+        //Metoder
 
-        public StaticClassSingleton Shared { get; }
-
-        public RelayCommand GoBack { get; set; }
+        //Properties
 
         public ObservableCollection<LicensSupplier> Suppliers
         {
@@ -62,18 +60,10 @@ namespace ABBLicensApp.Viewmodel
                 
             } 
         }
+        public RelayCommand NewSupplierBtn { get; set; }
+        public StaticClassSingleton Shared { get; }
+        public RelayCommand GoBack { get; set; }
 
-        private void GoBackToMain()
-        {
-            Navigation.GoToPage("LoginSucceed");
-        }
-
-     
-
-        private void NewSupplierNav()
-        {
-            Navigation.GoToPage("AddSupplier");
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

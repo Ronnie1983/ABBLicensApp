@@ -2,6 +2,7 @@
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace ABBLicensApp.Viewmodel
@@ -10,16 +11,30 @@ namespace ABBLicensApp.Viewmodel
     {
         public EditCustomerViewModel()
         {
-            CancelThis = new RelayCommand(GoBackCancel);
+            CancelThis = new GoBackCommand();
             RegisterCustomerBtn = new RelayCommand(AddCustomer);
             Shared = StaticClassSingleton.Instance;
         }
 
-        public StaticClassSingleton Shared { get; }
+        //Metoder
 
-        public RelayCommand RegisterCustomerBtn { get; set; }
+        private void AddCustomer()
+        {
+            foreach (var c in Shared.Customers)
+            {
+                if (c.CompanyName == Shared.SelectedCustomer.CompanyName)
+                {
+                    c.CompanyName = Name;
+                    c.Address = Addr;
+                    c.ContactName = Contact;
+                    c.Email = Email;
+                    c.PhoneNumber = Phone;
+                }
+            }
+            Navigation.GoBack();
+        }
 
-        public RelayCommand CancelThis { get; set; }
+        //Properties
 
         public string Name
         {
@@ -75,28 +90,11 @@ namespace ABBLicensApp.Viewmodel
                 OnPropertyChanged();
             }
         }
-
-        private void AddCustomer()
-        {
-            foreach (var c in Shared.Customers)
-            {
-                if (c.CompanyName == Shared.SelectedCustomer.CompanyName)
-                {
-                    c.CompanyName = Name;
-                    c.Address = Addr;
-                    c.ContactName = Contact;
-                    c.Email = Email;
-                    c.PhoneNumber = Phone;
-                }
-            }
-            Navigation.GoBack();
-        }
-
-        private void GoBackCancel()
-        {
-            Navigation.GoBack();
-        }
-
+        public StaticClassSingleton Shared { get; }
+        public RelayCommand RegisterCustomerBtn { get; set; }
+        public RelayCommand CancelThis { get; set; }
+        
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

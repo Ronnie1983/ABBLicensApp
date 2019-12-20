@@ -15,31 +15,10 @@ namespace ABBLicensApp.Viewmodel
             Shared = StaticClassSingleton.Instance;
             EditBtn = new RelayCommand(EditMethod);
             _name = Shared.SelectedLicensSupplier.Name;
-            GoBackBtn = new RelayCommand(Cancel);
+            GoBackBtn = new GoBackCommand();
         }
 
-        public StaticClassSingleton Shared { get; set; }
-
-        public RelayCommand GoBackBtn { get; set; }
-
-        public RelayCommand EditBtn { get; set; }
-
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private void Cancel()
-        {
-            Navigation.GoBack();
-        }
-
+        //Metoder
         private void EditMethod()
         {
             foreach (var a in Shared.LicensSupplier)
@@ -52,6 +31,23 @@ namespace ABBLicensApp.Viewmodel
 
             Navigation.GoBack();
         }
+
+        //Properties
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                if (value == _name) return;
+                _name = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public StaticClassSingleton Shared { get; set; }
+        public RelayCommand GoBackBtn { get; set; }
+        public RelayCommand EditBtn { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

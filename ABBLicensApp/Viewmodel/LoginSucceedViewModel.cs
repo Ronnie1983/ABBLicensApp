@@ -6,30 +6,17 @@ namespace ABBLicensApp.Viewmodel
     {
         public LoginSucceedViewModel()
         {
-            CustomerBtn = new RelayCommand(GotoCustomerList);
-            LicensesBtn = new RelayCommand(GoToLicenses);
-            ConnectLicenseBtn = new RelayCommand(GoToAddLicense);
+            CustomerBtn = new GoToPageCommand("Customers");
+            LicensesBtn = new GoToPageCommand("Licenses");
+            ConnectLicenseBtn = new GoToPageCommand("´ConnectNewLicense");
         }
 
+        //Metoder
+
+        //Properties
         public RelayCommand ConnectLicenseBtn { get; set; }
-
         public RelayCommand LicensesBtn { get; set; }
-
         public RelayCommand CustomerBtn { get; set; }
 
-        private void GoToAddLicense()
-        {
-            Navigation.GoToPage("ConnectNewLicens");
-        }
-
-        private void GoToLicenses()
-        {
-            Navigation.GoToPage("Licenses");
-        }
-
-        public void GotoCustomerList()
-        {
-            Navigation.GoToPage("Customers");
-        }
     }
 }
