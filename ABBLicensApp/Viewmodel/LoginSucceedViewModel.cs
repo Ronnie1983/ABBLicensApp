@@ -2,7 +2,7 @@
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class LoginSucceedViewModel
+    public class LoginSucceedViewModel : ViewModel
     {
         public LoginSucceedViewModel()
         {

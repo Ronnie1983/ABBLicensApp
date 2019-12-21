@@ -10,7 +10,7 @@ using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class CustomerViewModel : INotifyPropertyChanged
+    public class CustomerViewModel : ViewModel
     {
         private ObservableCollection<string> _activeLicenses = new ObservableCollection<string>();
         private ObservableCollection<Product> _filteredLicenses = new ObservableCollection<Product>();
@@ -148,9 +148,7 @@ namespace ABBLicensApp.Viewmodel
             get => _newNote ?? ""; //Hvis newNote == null så sæt dens værdi til ""
             set
             {
-                if (value == _newNote) return;
-                _newNote = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _newNote, value);
             }
         }
 
@@ -166,10 +164,8 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedCustomer;
             set
             {
-                if (Equals(value, Shared.SelectedCustomer)) return;
-                Shared.SelectedCustomer = value;
-                OnPropertyChanged();
-
+                Customer customer = Shared.SelectedCustomer;
+                SetProperty<Customer>(ref customer, value);
             }
         }
         public RelayCommand GoBack { get; set; }
@@ -180,16 +176,5 @@ namespace ABBLicensApp.Viewmodel
         public RelayCommand EditBtn { get; set; }
         public RelayCommand ConnectLicenseBtn { get; set; }
         public RelayCommand GoToHomepage { get; set; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
-
-
 }

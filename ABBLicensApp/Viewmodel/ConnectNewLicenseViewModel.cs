@@ -9,7 +9,7 @@ using Licens = ABBLicensApp.Model.Licens;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class ConnectNewLicenseViewModel : INotifyPropertyChanged
+    public class ConnectNewLicenseViewModel : ViewModel
     {
         private string _newKey;
         private int _newUnits;
@@ -75,39 +75,31 @@ namespace ABBLicensApp.Viewmodel
         public string NewKey
         {
             get => _newKey;
-            set => _newKey = value;
+            set => SetProperty<string>(ref _newKey, value);
         }
 
         public int NewUnits
         {
             get => _newUnits;
-            set => _newUnits = value;
+            set => SetProperty<int>(ref _newUnits, value);
         }
 
         public DateTime ExpireDate
         {
             get => _expireDate;
-            set => _expireDate = value;
+            set => SetProperty<DateTime>(ref _expireDate, value);
         }
 
         public DateTime StartDate
         {
             get => _startDate;
-            set => _startDate = value;
+            set => SetProperty<DateTime>(ref _startDate, value);
         }
-        
+
         public RelayCommand CreateBtn { get; set; }
 
         public RelayCommand GoBack { get; set; }
 
         public StaticClassSingleton Shared { get; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

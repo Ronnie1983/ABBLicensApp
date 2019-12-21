@@ -127,8 +127,6 @@
     <Compile Include="Model\GoBackCommand.cs" />
     <Compile Include="Model\GoToPageCommand.cs" />
     <Compile Include="Model\JsonDataBase.cs" />
-    <Compile Include="Model\JsonReader.cs" />
-    <Compile Include="Model\JsonWriter.cs" />
     <Compile Include="Model\Licens.cs" />
     <Compile Include="Model\LicensSupplier.cs" />
     <Compile Include="Model\Navigation.cs" />
@@ -149,6 +147,7 @@
     <Compile Include="Viewmodel\MainPageViewModel.cs" />
     <Compile Include="Viewmodel\RegisterPageViewModel.cs" />
     <Compile Include="Viewmodel\RegistrationSucceedViewModel.cs" />
+    <Compile Include="Viewmodel\ViewModel.cs" />
     <Compile Include="View\EditCustomer.xaml.cs">
       <DependentUpon>EditCustomer.xaml</DependentUpon>
     </Compile>

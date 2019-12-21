@@ -7,7 +7,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class CustomersViewModel : INotifyPropertyChanged
+    public class CustomersViewModel : ViewModel
     {
         public CustomersViewModel()
         {
@@ -16,7 +16,7 @@ namespace ABBLicensApp.Viewmodel
             Shared = StaticClassSingleton.Instance;
             SelectedCustomer = null;
         }
-        
+
         //Metoder
 
         //Properties
@@ -31,7 +31,7 @@ namespace ABBLicensApp.Viewmodel
                 {
                     Navigation.GoToPage("Customer");
                 }
-            } 
+            }
         }
 
         public string SearchCustomerText
@@ -40,7 +40,6 @@ namespace ABBLicensApp.Viewmodel
             set
             {
                 Shared.SearchCustomerText = value;
-                OnPropertyChanged();
                 OnPropertyChanged(nameof(FilteredCustomers));
             }
         }
@@ -52,7 +51,7 @@ namespace ABBLicensApp.Viewmodel
             {
                 Shared.FilteredCustomers = value;
                 OnPropertyChanged();
-            } 
+            }
         }
 
         public ObservableCollection<Customer> Customers
@@ -64,13 +63,5 @@ namespace ABBLicensApp.Viewmodel
         public RelayCommand NewCustomerBtn { get; set; }
         public RelayCommand GoBack { get; set; }
         public StaticClassSingleton Shared { get; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

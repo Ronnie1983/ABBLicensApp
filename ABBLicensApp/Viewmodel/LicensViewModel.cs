@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class LicensViewModel : INotifyPropertyChanged
+    public class LicensViewModel : ViewModel
     {
         ObservableCollection<Product> _newList = new ObservableCollection<Product>();
 
@@ -75,9 +75,7 @@ namespace ABBLicensApp.Viewmodel
             }
             set
             {
-                if (Equals(value, _newList)) return;
-                _newList = value;
-                OnPropertyChanged();
+                SetProperty<ObservableCollection<Product>>(ref _newList, value);
             }
         }
 
@@ -86,14 +84,5 @@ namespace ABBLicensApp.Viewmodel
         public RelayCommand GoBack { get; set; }
         public RelayCommand DeleteBtn { get; set; }
         public StaticClassSingleton Shared { get; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

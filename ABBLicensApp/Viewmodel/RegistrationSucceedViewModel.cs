@@ -3,7 +3,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class RegistrationSucceedViewModel
+    public class RegistrationSucceedViewModel : ViewModel
     {
         public RegistrationSucceedViewModel()
         {

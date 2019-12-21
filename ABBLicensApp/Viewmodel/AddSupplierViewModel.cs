@@ -3,7 +3,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class AddSupplierViewModel
+    public class AddSupplierViewModel : ViewModel
     {
         private string _name;
 
@@ -27,7 +27,7 @@ namespace ABBLicensApp.Viewmodel
         public string Name
         {
             get => _name;
-            set => _name = value;
+            set => SetProperty(ref _name, value);
         }
         public RelayCommand AddSupplierBtn { get; set; }
 

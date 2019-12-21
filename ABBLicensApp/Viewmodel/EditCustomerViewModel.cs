@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 
 namespace ABBLicensApp.Viewmodel
 {
-    class EditCustomerViewModel : INotifyPropertyChanged
+    class EditCustomerViewModel : ViewModel
     {
         private Customer _proxyCustomer;
         private string _originalName;
@@ -30,7 +30,6 @@ namespace ABBLicensApp.Viewmodel
 
             if (cust != null)
             {
-
                 cust.CompanyName = Name;
                 cust.Address = Addr;
                 cust.ContactName = Contact;
@@ -54,9 +53,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.CompanyName;
             set
             {
-                if (value == ProxyCustomer.CompanyName) return;
-                ProxyCustomer.CompanyName = value;
-                OnPropertyChanged();
+                string companyName = ProxyCustomer.CompanyName;
+                SetProperty<string>(ref companyName, value);
             }
         }
 
@@ -65,9 +63,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.PhoneNumber;
             set
             {
-                if (value == ProxyCustomer.PhoneNumber) return;
-                ProxyCustomer.PhoneNumber = value;
-                OnPropertyChanged();
+                string phoneNumber = ProxyCustomer.PhoneNumber;
+                SetProperty<string>(ref phoneNumber, value);
             }
         }
 
@@ -76,9 +73,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.Email;
             set
             {
-                if (value == ProxyCustomer.Email) return;
-                ProxyCustomer.Email = value;
-                OnPropertyChanged();
+                string email = ProxyCustomer.Email;
+                SetProperty<string>(ref email, value);
             }
         }
 
@@ -87,9 +83,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.ContactName;
             set
             {
-                if (value == ProxyCustomer.ContactName) return;
-                ProxyCustomer.ContactName = value;
-                OnPropertyChanged();
+                string contact = ProxyCustomer.ContactName;
+                SetProperty<string>(ref contact, value);
             }
         }
 
@@ -98,23 +93,13 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.Address;
             set
             {
-                if (value == ProxyCustomer.Address) return;
-                ProxyCustomer.Address = value;
-                OnPropertyChanged();
+                string address = ProxyCustomer.Address;
+                SetProperty<string>(ref address, value);
             }
         }
 
         public StaticClassSingleton Shared { get; }
         public RelayCommand RegisterCustomerBtn { get; set; }
         public RelayCommand CancelThis { get; set; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

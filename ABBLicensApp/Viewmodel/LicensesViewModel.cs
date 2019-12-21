@@ -7,7 +7,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class LicensesViewModel : INotifyPropertyChanged
+    public class LicensesViewModel : ViewModel
     {
         public LicensesViewModel()
         {
@@ -33,7 +33,6 @@ namespace ABBLicensApp.Viewmodel
             {
                 Shared.SearchLicensText = value;
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(FilteredLicensSupplier));
             }
         }
 
@@ -60,17 +59,9 @@ namespace ABBLicensApp.Viewmodel
                 
             } 
         }
+
         public RelayCommand NewSupplierBtn { get; set; }
         public StaticClassSingleton Shared { get; }
         public RelayCommand GoBack { get; set; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

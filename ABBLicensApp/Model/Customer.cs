@@ -11,7 +11,7 @@ namespace ABBLicensApp.Model
         private string _companyName;
         private string _address;
         private string _email;
-        private int _id;
+        //private int _id;
         private ObservableCollection<string> _notes;
         private string _phoneNumber;
         private string _contactName;
@@ -58,11 +58,11 @@ namespace ABBLicensApp.Model
             set => _email = value;
         }
 
-        public int Id
-        {
-            get => _id;
-            set => _id = value;
-        }
+        //public int Id
+        //{
+        //    get => _id;
+        //    set => _id = value;
+        //}
 
         public ObservableCollection<string> Notes
         {

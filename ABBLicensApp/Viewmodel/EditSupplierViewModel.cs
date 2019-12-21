@@ -6,7 +6,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class EditSupplierViewModel : INotifyPropertyChanged
+    public class EditSupplierViewModel : ViewModel
     {
         private string _name;
 
@@ -38,23 +38,12 @@ namespace ABBLicensApp.Viewmodel
             get => _name;
             set
             {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _name, value);
             }
         }
 
         public StaticClassSingleton Shared { get; set; }
         public RelayCommand GoBackBtn { get; set; }
         public RelayCommand EditBtn { get; set; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

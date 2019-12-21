@@ -14,7 +14,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class EditLicensViewModel : INotifyPropertyChanged
+    public class EditLicensViewModel : ViewModel
     {
         private Licens _originalLicens;
         private ObservableCollection<Product> _ProductListAtSupplier = new ObservableCollection<Product>();
@@ -49,7 +49,7 @@ namespace ABBLicensApp.Viewmodel
 
         //Properties
 
-        
+
         public Product SelectedProduct
         {
             get { return Shared.SelectedProduct; }
@@ -67,9 +67,8 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.ExpireDate;
             set
             {
-                if (value.Equals(Shared.SelectedLicens.ExpireDate)) return;
-                Shared.SelectedLicens.ExpireDate = value;
-                OnPropertyChanged();
+                DateTime expire = SelectedLicens.ExpireDate;
+                SetProperty<DateTime>(ref expire, value);
             }
         }
 
@@ -78,9 +77,8 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.StartDate;
             set
             {
-                if (value.Equals(Shared.SelectedLicens.StartDate)) return;
-                Shared.SelectedLicens.StartDate = value;
-                OnPropertyChanged();
+                DateTime start = SelectedLicens.StartDate;
+                SetProperty<DateTime>(ref start, value);
             }
         }
 
@@ -89,9 +87,8 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.Units;
             set
             {
-                if (value == Shared.SelectedLicens.Units) return;
-                Shared.SelectedLicens.Units = value;
-                OnPropertyChanged();
+                int units = SelectedLicens.Units;
+                SetProperty<int>(ref units, value);
             }
         }
 
@@ -100,15 +97,14 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.LicenseKey;
             set
             {
-                if (value == Shared.SelectedLicens.LicenseKey) return;
-                Shared.SelectedLicens.LicenseKey = value;
-                OnPropertyChanged();
+                string key = SelectedLicens.LicenseKey;
+                SetProperty<string>(ref key, value);
             }
         }
 
         public ObservableCollection<Product> ProductList
         {
-            get 
+            get
             {
                 _ProductListAtSupplier.Clear();
                 foreach (var p in Shared.Products)
@@ -126,14 +122,5 @@ namespace ABBLicensApp.Viewmodel
         public RelayCommand ChanceBtn { get; set; }
         public RelayCommand GoBackBtn { get; set; }
         public StaticClassSingleton Shared { get; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

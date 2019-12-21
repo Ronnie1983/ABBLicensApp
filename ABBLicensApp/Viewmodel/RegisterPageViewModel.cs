@@ -6,7 +6,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class RegisterPageViewModel : INotifyPropertyChanged
+    public class RegisterPageViewModel : ViewModel
     {
         private string _newName;
         private string _newPassword;
@@ -30,7 +30,7 @@ namespace ABBLicensApp.Viewmodel
         }
 
         //Properties
-        
+
         public string NewName
         {
             get => _newName;
@@ -47,9 +47,7 @@ namespace ABBLicensApp.Viewmodel
             get => _newPassword;
             set
             {
-                if (value == _newPassword) return;
-                _newPassword = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _newPassword, value);
             }
         }
 
@@ -58,9 +56,7 @@ namespace ABBLicensApp.Viewmodel
             get => _rePassword;
             set
             {
-                if (value == _rePassword) return;
-                _rePassword = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _rePassword, value);
             }
         }
 
@@ -69,21 +65,11 @@ namespace ABBLicensApp.Viewmodel
             get => _email;
             set
             {
-                if (value == _email) return;
-                _email = value;
-                OnPropertyChanged();
+                SetProperty<string> (ref _email, value);
             }
         }
         public RelayCommand RegisterButton { get; set; }
 
         public StaticClassSingleton Shared { get; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

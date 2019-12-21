@@ -6,7 +6,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    public class AddCustomerViewModel : INotifyPropertyChanged
+    public class AddCustomerViewModel : ViewModel
     {
         private string _name;
         private string _phone;
@@ -36,9 +36,7 @@ namespace ABBLicensApp.Viewmodel
             get => _addr;
             set
             {
-                if (value == _addr) return;
-                _addr = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _addr, value);
             }
         }
 
@@ -48,9 +46,7 @@ namespace ABBLicensApp.Viewmodel
             get => _name;
             set
             {
-                if (value == _name) return;
-                _name = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _name, value);
             }
         }
 
@@ -59,9 +55,7 @@ namespace ABBLicensApp.Viewmodel
             get => _phone;
             set
             {
-                if (value == _phone) return;
-                _phone = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _phone, value);
             }
         }
 
@@ -70,9 +64,7 @@ namespace ABBLicensApp.Viewmodel
             get => _email;
             set
             {
-                if (value == _email) return;
-                _email = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _email, value);
             }
         }
 
@@ -81,9 +73,7 @@ namespace ABBLicensApp.Viewmodel
             get => _contact;
             set
             {
-                if (value == _contact) return;
-                _contact = value;
-                OnPropertyChanged();
+                SetProperty<string>(ref _contact, value);
             }
         }
 
@@ -92,13 +82,5 @@ namespace ABBLicensApp.Viewmodel
         public RelayCommand RegisterCustomerBtn { get; set; }
 
         public RelayCommand CancelThis { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

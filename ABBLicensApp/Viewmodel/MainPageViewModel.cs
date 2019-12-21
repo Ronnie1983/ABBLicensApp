@@ -3,7 +3,7 @@ using ABBLicensApp.Model;
 
 namespace ABBLicensApp.Viewmodel
 {
-    class MainPageViewModel
+    class MainPageViewModel : ViewModel
     {
         private string _newName; // Holds the name of the login in login screen
         private string _newPassword; // Holds the password inserted in logins creen
@@ -35,8 +35,7 @@ namespace ABBLicensApp.Viewmodel
             get => _newName;
             set
             {
-                if (value == _newName) return;
-                _newName = value;
+                SetProperty<string>(ref _newName, value);
             }
         }
 
@@ -45,14 +44,13 @@ namespace ABBLicensApp.Viewmodel
             get => _newPassword;
             set
             {
-                if (value == _newPassword) return;
-                _newPassword = value;
+                SetProperty<string>(ref _newPassword, value);
             }
         }
         public StaticClassSingleton Shared { get; }
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand GoToRegisterPage { get; set; }
 
-        
+
     }
 }
