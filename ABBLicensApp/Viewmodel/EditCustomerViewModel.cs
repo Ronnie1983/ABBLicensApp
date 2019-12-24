@@ -1,7 +1,9 @@
 ﻿using ABBLicensApp.Annotations;
 using ABBLicensApp.Common;
 using ABBLicensApp.Model;
+using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -15,7 +17,7 @@ namespace ABBLicensApp.Viewmodel
         public EditCustomerViewModel()
         {
             CancelThis = new GoBackCommand();
-            RegisterCustomerBtn = new RelayCommand(UpdateCustomer);
+            RegisterCustomerBtn = new RelayCommand(UpdateCustomer, ValidateCustomer);
             Shared = StaticClassSingleton.Instance;
             ProxyCustomer = new Customer(Shared.SelectedCustomer);
 
@@ -23,6 +25,31 @@ namespace ABBLicensApp.Viewmodel
         }
 
         //Metoder
+
+        private bool ValidateCustomer()
+        {
+            if (ProxyCustomer == null)
+            {
+                return false;
+            }
+            else
+            {
+                if (ProxyCustomer.CompanyName.Length > 0 &&
+                    ProxyCustomer.Email.Length > 0 &&
+                    ProxyCustomer.PhoneNumber.Length > 0 &&
+                    ProxyCustomer.ContactName.Length > 0 &&
+                    ProxyCustomer.Address.Length > 0)
+                {
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
 
         private void UpdateCustomer()
         {
@@ -101,5 +128,6 @@ namespace ABBLicensApp.Viewmodel
         public StaticClassSingleton Shared { get; }
         public RelayCommand RegisterCustomerBtn { get; set; }
         public RelayCommand CancelThis { get; set; }
+        public bool CanRegister { get => RegisterCustomerBtn.CanExecute(); }
     }
 }

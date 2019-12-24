@@ -61,7 +61,7 @@
                 <TextBox Style="{StaticResource TextboxStyleCustom}" Text="{Binding Email , Mode=TwoWay}"/>
             </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-                    <Button Content="Create" Style="{StaticResource BlueButtonCustom}" Command="{Binding RegisterCustomerBtn}"/>
+                    <Button Content="Create" Style="{StaticResource BlueButtonCustom}" Command="{Binding RegisterCustomerBtn}" IsEnabled="{Binding CanRegister}"/>
                     <Button Content="Cancel" Style="{StaticResource BlueButtonCustom}" Background="Red" Command="{Binding CancelThis}"/>
                 </StackPanel>
             </StackPanel>
