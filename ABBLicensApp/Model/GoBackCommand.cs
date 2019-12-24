@@ -8,6 +8,7 @@ namespace ABBLicensApp.Model
 {
     class GoBackCommand : RelayCommand
     {
-        public GoBackCommand() : base(() => Navigation.GoBack()) { }
+        public GoBackCommand() : base(Navigation.GoBack) { }
+        public GoBackCommand(Func<bool> canRun) : base(Navigation.GoBack, canRun) { }
     }
 }

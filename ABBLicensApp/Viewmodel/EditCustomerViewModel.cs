@@ -53,8 +53,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.CompanyName;
             set
             {
-                string companyName = ProxyCustomer.CompanyName;
-                SetProperty<string>(ref companyName, value);
+                ProxyCustomer.CompanyName = value;
+                OnPropertyChanged();
             }
         }
 
@@ -63,8 +63,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.PhoneNumber;
             set
             {
-                string phoneNumber = ProxyCustomer.PhoneNumber;
-                SetProperty<string>(ref phoneNumber, value);
+                ProxyCustomer.PhoneNumber = value;
+                OnPropertyChanged();
             }
         }
 
@@ -73,8 +73,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.Email;
             set
             {
-                string email = ProxyCustomer.Email;
-                SetProperty<string>(ref email, value);
+                ProxyCustomer.Email = value;
+                OnPropertyChanged();
             }
         }
 
@@ -83,8 +83,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.ContactName;
             set
             {
-                string contact = ProxyCustomer.ContactName;
-                SetProperty<string>(ref contact, value);
+                ProxyCustomer.ContactName = value;
+                OnPropertyChanged();
             }
         }
 
@@ -93,8 +93,8 @@ namespace ABBLicensApp.Viewmodel
             get => ProxyCustomer.Address;
             set
             {
-                string address = ProxyCustomer.Address;
-                SetProperty<string>(ref address, value);
+                ProxyCustomer.Address = value;
+                OnPropertyChanged();
             }
         }
 
