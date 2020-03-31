@@ -16,27 +16,27 @@ namespace ABBLicensApp.Viewmodel
 {
     public class EditLicensViewModel : ViewModel
     {
-        private Licens _originalLicens;
+        private Licens _originalLicense;
         private ObservableCollection<Product> _ProductListAtSupplier = new ObservableCollection<Product>();
 
         public EditLicensViewModel()
         {
             Shared = StaticClassSingleton.Instance;
             GoBackBtn = new GoBackCommand();
-            ChanceBtn = new RelayCommand(Change);
-            _originalLicens = Shared.SelectedLicens;
+            ChanceBtn = new RelayCommand(SaveChangesAndGoBack);
+            _originalLicense = Shared.SelectedLicens;
         }
 
         //Metoder
-        private void Change()
+        private void SaveChangesAndGoBack()
         {
             for (int i = 0; i < Shared.Products.Count; i++)
             {
                 Product p = Shared.Products[i];
                 Licens l = (Licens)p;
-                if (l.LicenseKey == _originalLicens.LicenseKey)
+                if (l.LicenseKey == _originalLicense.LicenseKey)
                 {
-                    Shared.Products[i] = SelectedLicens;
+                    Shared.Products[i] = SelectedLicense;
 
                     //l.LicenseKey = LicenseKey;
                     //l.ExpireDate = ExpireDate;
@@ -56,7 +56,7 @@ namespace ABBLicensApp.Viewmodel
             set { Shared.SelectedProduct = value; }
         }
 
-        public Licens SelectedLicens
+        public Licens SelectedLicense
         {
             get { return Shared.SelectedLicens; }
             set { Shared.SelectedLicens = value; }
@@ -67,7 +67,7 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.ExpireDate;
             set
             {
-                DateTime expire = SelectedLicens.ExpireDate;
+                DateTime expire = SelectedLicense.ExpireDate;
                 SetProperty<DateTime>(ref expire, value);
             }
         }
@@ -77,7 +77,7 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.StartDate;
             set
             {
-                DateTime start = SelectedLicens.StartDate;
+                DateTime start = SelectedLicense.StartDate;
                 SetProperty<DateTime>(ref start, value);
             }
         }
@@ -87,7 +87,7 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.Units;
             set
             {
-                int units = SelectedLicens.Units;
+                int units = SelectedLicense.Units;
                 SetProperty<int>(ref units, value);
             }
         }
@@ -97,7 +97,7 @@ namespace ABBLicensApp.Viewmodel
             get => Shared.SelectedLicens.LicenseKey;
             set
             {
-                string key = SelectedLicens.LicenseKey;
+                string key = SelectedLicense.LicenseKey;
                 SetProperty<string>(ref key, value);
             }
         }

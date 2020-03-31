@@ -21,12 +21,12 @@ namespace ABBLicensApp.Viewmodel
         {
             Shared = StaticClassSingleton.Instance;
             GoBack = new GoBackCommand();
-            CreateBtn = new RelayCommand(CreateLicens);
+            CreateBtn = new RelayCommand(CreateLicensAndGoBack);
         }
 
         //Metoder
 
-        private void CreateLicens()
+        private void CreateLicensAndGoBack()
         {
             if (NewKey != "")
             {

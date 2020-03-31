@@ -24,20 +24,20 @@ namespace ABBLicensApp.Viewmodel
         {
             Shared = StaticClassSingleton.Instance;
             GoBack = new GoBackCommand();
-            AddBtn = new RelayCommand(AddComment);
-            DeleteNoteBtn = new RelayCommand(DeleteNote);
+            AddBtn = new RelayCommand(AddCommentAndEmptyNewNote);
+            DeleteNoteBtn = new RelayCommand(DeleteSelectedNote);
             GoToHomepage = new GoToPageCommand("LoginSucceed");
             EditBtn = new GoToPageCommand("EditCustomer");
             Customer = Shared.SelectedCustomer;
             ConnectLicenseBtn = new GoToPageCommand("ConnectNewLicens");
-            GoToEditLicense = new RelayCommand(EditLicens);
+            GoToEditLicense = new RelayCommand(UpdatedSelectedLicensAndGoToEditLicense);
             SelectedLicens = null;
             SelectedProduct = null;
         }
 
 
         //Metoder
-        public void AddComment()
+        public void AddCommentAndEmptyNewNote()
         {
             if (NewNote.Length > 0)
             {
@@ -46,14 +46,16 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void DeleteNote()
+        private void DeleteSelectedNote()
         {
             Customer.Notes.Remove(SelectedNote);
         }
 
 
-        private void EditLicens()
+        private void UpdatedSelectedLicensAndGoToEditLicense()
         {
+            //TODO pass selectedproduct to editlicens page
+
             if (SelectedProduct != null)
             {
                 SelectedLicens = (Licens)SelectedProduct;

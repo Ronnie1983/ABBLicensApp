@@ -19,7 +19,7 @@ namespace ABBLicensApp.Viewmodel
         }
 
         //Metoder
-        private void EditMethod()
+        private void EditMethod() // ?
         {
             foreach (var a in Shared.LicensSupplier)
             {
