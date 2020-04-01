@@ -44,7 +44,7 @@
 
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left" Margin="370,14,0,0" VerticalAlignment="Top">
             <Button Style="{StaticResource BlueButtonCustom}" Content="Cancel" MinWidth="120" Background="Red" Command="{Binding GoBackBtn}"/>
-            <Button Style="{StaticResource BlueButtonCustom}" Content="Chance" MinWidth="120" Command="{Binding ChanceBtn}"/>
+            <Button Style="{StaticResource BlueButtonCustom}" Content="Save Changes" MinWidth="120" Command="{Binding SaveChangesBtn}" Click="Button_Click"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <TextBlock Text="{Binding Shared.SelectedLicensSupplier.Name}" Margin="10" FontSize="50" HorizontalAlignment="Center"/>

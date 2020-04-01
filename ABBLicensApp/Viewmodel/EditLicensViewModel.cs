@@ -23,12 +23,12 @@ namespace ABBLicensApp.Viewmodel
         {
             Shared = StaticClassSingleton.Instance;
             GoBackBtn = new GoBackCommand();
-            ChanceBtn = new RelayCommand(SaveChangesAndGoBack);
+            SaveChangesBtn = new ExecuteAndNavigateBackCommand(SaveChanges);
             _originalLicense = Shared.SelectedLicens;
         }
 
         //Metoder
-        private void SaveChangesAndGoBack()
+        private void SaveChanges()
         {
             for (int i = 0; i < Shared.Products.Count; i++)
             {
@@ -119,7 +119,7 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        public RelayCommand ChanceBtn { get; set; }
+        public RelayCommand SaveChangesBtn { get; set; }
         public RelayCommand GoBackBtn { get; set; }
         public StaticClassSingleton Shared { get; }
     }

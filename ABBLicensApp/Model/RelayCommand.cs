@@ -26,7 +26,7 @@ namespace ABBLicensApp.Model
             return _canExecute();
         }
 
-        public void Execute(object parameter=null)
+        public virtual void Execute(object parameter=null)
         {
             _execute();
         }

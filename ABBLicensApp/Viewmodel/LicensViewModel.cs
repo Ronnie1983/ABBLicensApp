@@ -15,8 +15,8 @@ namespace ABBLicensApp.Viewmodel
         {
             GoBack = new GoBackCommand();
             DeleteBtn = new RelayCommand(Delete);
-            ChanceBtn = new RelayCommand(Change);
-            EditSupplierBtn = new RelayCommand(EditSupplier);
+            ChanceBtn = new RelayCommand(GoToEditLicensePage);
+            EditSupplierBtn = new RelayCommand(GoToEditSupplierPage);
             Shared = StaticClassSingleton.Instance;
             SelectedLicens = null;
         }
@@ -30,7 +30,7 @@ namespace ABBLicensApp.Viewmodel
             OnPropertyChanged(nameof(NewList));
         }
 
-        private void EditSupplier()
+        private void GoToEditSupplierPage()
         {
             if (Shared.SelectedLicensSupplier != null)
             {
@@ -38,7 +38,7 @@ namespace ABBLicensApp.Viewmodel
             }
         }
 
-        private void Change()
+        private void GoToEditLicensePage()
         {
             if (SelectedLicens != null)
             {

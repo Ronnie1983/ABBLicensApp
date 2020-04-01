@@ -9,17 +9,16 @@ namespace ABBLicensApp.Viewmodel
 
         public AddSupplierViewModel()
         {
-            AddSupplierBtn = new RelayCommand(AddSupplierAndGoBack);
+            AddSupplierBtn = new ExecuteAndNavigateBackCommand(AddSupplier);
             GoBackBtn = new GoBackCommand();
             Shared = StaticClassSingleton.Instance;
         }
         
         //Metoder
         
-        public void AddSupplierAndGoBack()
+        public void AddSupplier()
         {
             Shared.LicensSupplier.Add(new LicensSupplier(Name));
-            Navigation.GoBack();
         }
 
         //Properties

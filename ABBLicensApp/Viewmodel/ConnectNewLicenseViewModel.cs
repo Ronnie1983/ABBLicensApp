@@ -21,19 +21,18 @@ namespace ABBLicensApp.Viewmodel
         {
             Shared = StaticClassSingleton.Instance;
             GoBack = new GoBackCommand();
-            CreateBtn = new RelayCommand(CreateLicensAndGoBack);
+            CreateBtn = new ExecuteAndNavigateBackCommand(CreateLicens);
         }
 
         //Metoder
 
-        private void CreateLicensAndGoBack()
+        private void CreateLicens()
         {
             if (NewKey != "")
             {
                 _currentLicense = new Licens(NewKey, NewUnits, ExpireDate, SelectedCustomer, StartDate, SelectedLicensSupplier);
 
                 Shared.Products.Add(_currentLicense);
-                Navigation.GoBack();
             }
 
         }

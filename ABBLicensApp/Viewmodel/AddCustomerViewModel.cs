@@ -17,16 +17,15 @@ namespace ABBLicensApp.Viewmodel
         public AddCustomerViewModel()
         {
             CancelThis = new GoBackCommand();
-            RegisterCustomerBtn = new RelayCommand(AddCustomerAndGoBack);
+            RegisterCustomerBtn = new ExecuteAndNavigateBackCommand(AddCustomer);
             Shared = StaticClassSingleton.Instance;
         }
 
         //Metoder
 
-        private void AddCustomerAndGoBack()
+        private void AddCustomer()
         {
             Shared.Customers.Add(new Customer(Name, Addr, Email, Phone, Contact));
-            Navigation.GoBack();
         }
 
         //Properties
