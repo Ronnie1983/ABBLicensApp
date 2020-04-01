@@ -44,7 +44,6 @@ namespace ABBLicensApp.Viewmodel
                     //c.StartDate = StartDate;
                 }
             }
-            Navigation.GoBack();
         }
 
         //Properties

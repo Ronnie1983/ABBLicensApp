@@ -40,6 +40,25 @@ namespace ABBLicensApp.Model
         {
         }
 
+        public bool IsEmpty()
+        {
+            return CompanyName.Length == 0 &&
+            Email.Length == 0 &&
+            PhoneNumber.Length == 0 &&
+            ContactName.Length == 0 &&
+            Address.Length == 0;
+        }
+
+        public bool HasEmptyField()
+        {
+            return CompanyName.Length == 0 ||
+            Email.Length == 0 ||
+            PhoneNumber.Length == 0 ||
+            ContactName.Length == 0 ||
+            Address.Length == 0;
+        }
+
+
         public string CompanyName
         {
             get => _companyName;

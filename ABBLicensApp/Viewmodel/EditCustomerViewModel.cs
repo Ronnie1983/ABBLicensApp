@@ -34,22 +34,9 @@ namespace ABBLicensApp.Viewmodel
             }
             else
             {
-                if (ProxyCustomer.CompanyName.Length > 0 &&
-                    ProxyCustomer.Email.Length > 0 &&
-                    ProxyCustomer.PhoneNumber.Length > 0 &&
-                    ProxyCustomer.ContactName.Length > 0 &&
-                    ProxyCustomer.Address.Length > 0)
-                {
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return !ProxyCustomer.HasEmptyField();
             }
         }
-
 
         private void UpdateCustomer()
         {
