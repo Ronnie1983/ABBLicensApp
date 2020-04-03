@@ -8,6 +8,8 @@ namespace ABBLicensApp.Model
 {
     public class Customer : INotifyPropertyChanged
     {
+
+        //Test for update
         private string _companyName;
         private string _address;
         private string _email;
